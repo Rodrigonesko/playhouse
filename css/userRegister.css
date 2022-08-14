@@ -1,0 +1,56 @@
+.user-register-section {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-register-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 6px;
+    border: 1px solid gray;
+    box-shadow: 0 0 1em gray;
+}
+
+.user-register-form form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-form {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.label-form {
+    margin-right: 5px;
+}
+
+.user-register-container-btn {
+    margin-top: 15px;
+}
+
+.user-register-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: lightgray;
+    transition: 200ms;
+}
+
+.user-register-btn:hover {
+    cursor: pointer;
+    background-color: rgb(67, 163, 230);
+    color: #fff;
+}
+
+

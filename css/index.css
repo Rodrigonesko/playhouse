@@ -9,3 +9,22 @@
 a {
     text-decoration: none; 
 }
+
+.success {
+    background-color: rgb(139, 255, 116);
+    color: rgb(14, 117, 0);
+    border: 1px solid rgb(14, 117, 0);
+    padding: 4px;
+}
+
+.warning {
+    background-color: rgb(248, 248, 145);
+    color: rgb(129, 129, 1);
+    border: 1px solid rgb(116, 116, 0);
+    padding: 4px;
+}
+
+.align {
+    display: flex;
+    align-items: center;
+}

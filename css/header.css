@@ -1,0 +1,32 @@
+.nav-list {
+    background-color: rgb(67, 163, 230);
+    box-shadow: 0px 0px 10px gray; 
+    margin: 0;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-item{
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: black;
+    transition: all 200ms ease-in;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.nav-item .fundo:hover{
+    color: white;
+    border-radius: 10px;
+}
+
+.nav-item:first-child{
+    margin-right: auto;
+    margin-left: 2rem;
+}
