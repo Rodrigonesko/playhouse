@@ -1,0 +1,72 @@
+.party-register {
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+.subtitle {
+    border-top: 2px solid black;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.column-2 {
+    display: flex;
+
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 1em;
+    padding: 10px 0 5px;
+    border-bottom: 1px solid black;
+    margin-right: 1rem;
+    margin-bottom: 16px;
+}
+
+.input-box span {
+    position: absolute;
+    left: 0;
+    padding: 10px 0 5px;
+    color: darkgray;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: 200ms;
+}
+
+.input-box input:valid ~ span, .input-box input:focus ~ span{
+    color: blue;
+    transform: translateY(-16px);
+    font-size: 0.65rem;
+}
+
+.btn-form {
+    text-align: center;
+}
+
+.btn-form button {
+    background-color: lightgray;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: 200ms;
+}
+
+.btn-form button:hover {
+    cursor: pointer;
+    background-color: rgb(67, 163, 230);
+    color: #fff;
+}

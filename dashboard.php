@@ -26,6 +26,5 @@
         ?>
     </header>
     <h1>Bem vindo <?php echo $name; ?>!</h1>
-    <a href="php/login/exit.php">Sair</a>
 </body>
 </html>

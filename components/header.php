@@ -12,11 +12,19 @@
             </li>";
             echo "        
             <li class='nav-item'>
-                <a class= 'fundo' href='partyRegister.php'>Cadastro Festa</a>
+                <a class= 'fundo' href='partyRegister.php'>Cadastro Festas</a>
             </li>";
         }
-
         ?>
+        <li class='nav-item'>
+            <a class='fundo' href='partyRegister.php'>Controle de Entrada</a>
+        </li>
+        <li class='nav-item'>
+            <a class='fundo' href='dashboard.php'>Listagem</a>
+        </li>
+        <li class='nav-item'>
+            <a class='fundo' href='php/login/exit.php'>Sair</a>
+        </li>
 
     </ul>
 </nav>
