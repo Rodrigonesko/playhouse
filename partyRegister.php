@@ -35,6 +35,7 @@ $adm = $_SESSION['adm'];
             <?php 
                 if(isset($_SESSION['msg'])){
                     echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
                 }
             ?>
             <div class="title">

@@ -1,0 +1,38 @@
+#main {
+    display: flex;
+    padding: 1%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.details-section-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.title {
+    margin-bottom: 1%;
+}
+
+.subtitle {
+    margin-bottom: 1%;
+}
+
+.container-inputs {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.input-box {
+    margin: 1%;
+    font-size: 1em;
+    width: 100%;
+}
+
+.input-box input {
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+

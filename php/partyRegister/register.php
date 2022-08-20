@@ -28,10 +28,14 @@ if(isset($_POST['register'])){
     $phone = $_POST['phone'];
     $email = $_POST['email'];
 
-    $insert = $mysqli->prepare("INSERT INTO parties (party, n_people, value, payment, name, age, date, time, time_end, parents_name, phone, email)
+    echo $date;
+    echo "<br>";
+
+    $insert = $mysqli->prepare("INSERT INTO parties (party, n_people, value, payment, name, age, date_party, time, time_end, parents_name, phone, email)
      VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-     $insert->bind_param('sissssisssss', $party, $nPeople, $value, $payment, $name, $age, $date, $time, $timeEnd, $parentsName, $phone, $email);
+     $insert->bind_param('sisssissssss', $party, $nPeople, $value, $payment, $name, $age, $date, $time, $timeEnd, $parentsName, $phone, $email);
     $insert->execute();
+    echo $date;
     if($mysqli->affected_rows){
         $_SESSION['msg'] = "<p class='success'>Festa Cadastrada com Sucesso!</p>";
         header("Location: ../../partyRegister.php");
