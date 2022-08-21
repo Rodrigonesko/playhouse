@@ -2,7 +2,6 @@
     session_start();
     ob_start();
     require_once 'connection.php';
-
     if(isset($_SESSION['name'])){
         header("Location: dashboard.php");
     }
@@ -31,6 +30,7 @@
                     </div>
                     <?php
                         if(isset($_POST['enter'])){
+                         
                             $email = $_POST['email'];
                             $password = $_POST['password'];
                             $result = $mysqli->prepare("SELECT id, username, password, name, adm FROM users WHERE username=?");

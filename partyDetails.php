@@ -70,7 +70,7 @@ $adm = $_SESSION['adm'];
 
             <section class="details-section-container">
                 <div class="title">
-                    <h3>ID Festa</h3>
+                    <h3><input type="text" name="id" value="<?php echo $id ?>"/> Festa</h3>
                 </div>
                 <div class="details-container">
                     <div class="subtitle">
@@ -149,12 +149,12 @@ $adm = $_SESSION['adm'];
                         </div>
                         <div class="input-box">
                             <label for="mid_contact">Por meio do contato: </label>
-                            <input type="text" name="mid_contact" id="mid_contact" value="<?php echo $midContact ?>">
+                            <input type="text" name="mid-contact" id="mid_contact" value="<?php echo $midContact ?>">
                             <span>do Buffet Play House</span>
                         </div>
                         <div class="input-box">
-                            <label for="color_balloons">Cor das bexigas: </label>
-                            <input type="text" name="color_balloons" id="color_balloons" value="<?php echo $colorBalloons ?>">
+                            <label for="color-balloons">Cor das bexigas: </label>
+                            <input type="text" name="color-balloons" id="color-balloons" value="<?php echo $colorBalloons ?>">
                         </div>
                         <div class="input-box">
                             <label for="furniture">Mobiliario: </label>
@@ -171,16 +171,16 @@ $adm = $_SESSION['adm'];
                         </div>
                         <div class="input-box">
                             <span>Será servida cerveja?</span>
-                            <input type="radio" name="alcoholic" id="alcoholic-yes">
+                            <input type="radio" name="alcoholic" id="alcoholic-yes" value='yes'>
                             <label for="alcoholic-yes">Sim</label>
-                            <input type="radio" name="alcoholic" id="alcoholic-no">
+                            <input type="radio" name="alcoholic" id="alcoholic-no" value='no'>
                             <label for="alcoholic-no">Não</label>
                         </div>
                         <div class="input-box">
                             <span>Vai adquirir do Buffet?</span>
-                            <input type="radio" name="alcoholic-buffet" id="alcoholic-buffet-yes">
+                            <input type="radio" name="alcoholic-buffet" id="alcoholic-buffet-yes" value='yes'>
                             <label for="alcoholic-buffet-yes">Sim</label>
-                            <input type="radio" name="alcoholic-buffet" id="alcoholic-buffet-no">
+                            <input type="radio" name="alcoholic-buffet" id="alcoholic-buffet-no" value='no'>
                             <label for="alcoholic-buffet-no">Não</label>
                         </div>
                         <div class="input-box">
@@ -190,9 +190,9 @@ $adm = $_SESSION['adm'];
 
                         <div class="input-box">
                             <span>Será servida outro tipo de bebida? </span>
-                            <input type="radio" name="other-drink" id="other-drink-yes">
+                            <input type="radio" name="other-drink" id="other-drink-yes" value='yes'>
                             <label for="other-drink-yes">Sim</label>
-                            <input type="radio" name="other-drink" id="other-drink-no">
+                            <input type="radio" name="other-drink" id="other-drink-no" value='no'>
                             <label for="other-drink-no">Não</label>
                         </div>
                         <div class="input-box">
