@@ -63,4 +63,7 @@ if (isset($_POST['save'])) {
     $updateDrinks = $mysqli->prepare("UPDATE parties SET alcoholic=?, alcoholic_buffet=?, alcoholic_brand=?, other_drink=?, souvenir=?, photographer=? WHERE id=?");
     $updateDrinks->bind_param('ssssssi', $alcoholic, $alcoholicBuffet, $alcoholicBrand, $otherDrink, $souvenir, $photographer, $id);
     $updateDrinks->execute();
+
+    header("Location: ../../partyDetails.php?id=$id");
+
 }

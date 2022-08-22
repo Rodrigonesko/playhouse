@@ -70,7 +70,7 @@ $adm = $_SESSION['adm'];
 
             <section class="details-section-container">
                 <div class="title">
-                    <h3><input type="text" name="id" value="<?php echo $id ?>"/> Festa</h3>
+                    <h3><input type="text" name="id" value="<?php echo $id ?>" disabled/> Festa</h3>
                 </div>
                 <div class="details-container">
                     <div class="subtitle">

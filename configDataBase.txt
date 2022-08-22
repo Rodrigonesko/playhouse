@@ -27,7 +27,7 @@ CREATE TABLE `parties` (
   `reservation` varchar(45) DEFAULT NULL,
   `reservation_date` varchar(45) DEFAULT NULL,
   `mid_contact` varchar(45) DEFAULT NULL,
-  `color_baloons` varchar(45) DEFAULT NULL,
+  `color_balloons` varchar(45) DEFAULT NULL,
   `furniture` varchar(45) DEFAULT NULL,
   `optional` text DEFAULT NULL,
   `alcoholic` varchar(45) DEFAULT NULL,
@@ -36,5 +36,6 @@ CREATE TABLE `parties` (
   `other_drink` varchar(45) DEFAULT NULL,
   `souvenir` varchar(45) DEFAULT NULL,
   `photographer` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4
