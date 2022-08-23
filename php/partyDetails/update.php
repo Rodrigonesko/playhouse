@@ -64,6 +64,8 @@ if (isset($_POST['save'])) {
     $updateDrinks->bind_param('ssssssi', $alcoholic, $alcoholicBuffet, $alcoholicBrand, $otherDrink, $souvenir, $photographer, $id);
     $updateDrinks->execute();
 
+    $_SESSION['msg'] = "<p class='success'>Atualizações realizadas com sucesso!</p>";
+
     header("Location: ../../partyDetails.php?id=$id");
 
 }

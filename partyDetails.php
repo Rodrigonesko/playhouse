@@ -67,10 +67,15 @@ $adm = $_SESSION['adm'];
     </header>
     <form action="php/partyDetails/update.php" method="POST" id="form">
         <main id="main">
-
             <section class="details-section-container">
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
                 <div class="title">
-                    <h3><input type="text" name="id" value="<?php echo $id ?>" disabled/> Festa</h3>
+                    <h3><input type="text" name="id" value="<?php echo $id ?>" readonly /> Festa</h3>
                 </div>
                 <div class="details-container">
                     <div class="subtitle">
