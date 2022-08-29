@@ -1,72 +1,120 @@
-.party-register {
+.section-container-register {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    padding: 4%;
+    padding: 1%;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .title {
     margin-bottom: 2rem;
 }
 
-.subtitle {
-    border-top: 2px solid black;
-    padding-top: 1rem;
-    margin-bottom: 1.5rem;
+.form {
+    width: 80%;
+    border: 1px solid black;
+    padding: 2rem;
 }
 
-.column-2 {
+.progress-bar {
+    position: relative;
     display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
 
+.progress-bar::before {
+    content: "";
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: lightgray;
+    z-index: -1;
+}
+
+.progress-step {
+    width: 2.1874rem;
+    height: 2.1874rem;
+    background-color: lightgray;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-step-active {
+    background-color: rgb(67, 163, 230);
+    color: white;
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    font-size: 0.85rem;
+    color: gray;
+}
+
+.page {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-step {
+    display: none;
+}
+
+.page-step-active {
+    display: flex;
 }
 
 .input-box {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "label input";
+    margin-bottom: 10px;
+}
+
+.input-box label { grid-area: label; }
+      
+.input-box input { grid-area: input; padding: 5px;}
+
+.observation-box {
     display: flex;
     flex-direction: column;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.input {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    font-size: 1em;
-    padding: 10px 0 5px;
-    border-bottom: 1px solid black;
-    margin-right: 1rem;
-    margin-bottom: 16px;
-}
-
-.input-box span {
-    position: absolute;
-    left: 0;
-    padding: 10px 0 5px;
-    color: darkgray;
-    text-transform: uppercase;
-    pointer-events: none;
-    transition: 200ms;
-}
-
-.input-box input:valid ~ span, .input-box input:focus ~ span{
-    color: blue;
-    transform: translateY(-16px);
-    font-size: 0.65rem;
-}
-
-.btn-form {
+.container-btn {
     text-align: center;
+    margin-top: 20px;
 }
 
-.btn-form button {
-    background-color: lightgray;
+.btn-next {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    text-transform: uppercase;
+    background-color: rgb(67, 163, 230);
+    color: white;
     transition: 200ms;
 }
 
-.btn-form button:hover {
+.btn-next:hover {
+    background-color: rgb(32, 129, 199);
     cursor: pointer;
-    background-color: rgb(67, 163, 230);
-    color: #fff;
 }
