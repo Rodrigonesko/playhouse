@@ -3,13 +3,6 @@
 require_once '../connection.php';
 
 ?>
-<div class="title">
-    <h2>Cardápio e Escalas</h2>
-</div>
-<div class="subtitle">
-    <h3>Cardápio</h3>
-</div>
-
 <div class="item-cardapio">
     <h3>Mesa de Boas Vindas (02 Opções)</h3>
     <div>
@@ -278,9 +271,4 @@ require_once '../connection.php';
         <input type="checkbox" name="cha-gelado" id="cha-gelado" value="Chá Gelado">
         <label for="cha-gelado">Chá Gelado</label>
     </div>
-</div>
-
-<div class="containter-btn">
-    <button class="btn-next" id="btn-prev-2" type="button">Anterior</button>
-    <button class="btn-next" id="btn-registrar" type="button">Registrar</button>
 </div>
