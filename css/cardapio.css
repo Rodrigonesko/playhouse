@@ -1,0 +1,59 @@
+.subtitle {
+    margin-bottom: 1.5rem;
+}
+
+.item-cardapio {
+    width: 80%;
+    text-align: center;
+}
+
+.item-cardapio h3 {
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+select, input {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+.container-salgados {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-salgados select {
+    width: 50%;
+    margin: 0.5rem;
+}
+
+.container-salgados input {
+    width: 3rem;
+}
+
+.mini-churros, .bolo {
+    margin-bottom: 1rem;
+}
+
+.mini-churros span, .bolo span {
+    margin-right: 1rem;
+}
+
+.doces {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.doces select {
+    width: 60%;
+    margin: 0.5rem;
+}
+
+.doces input {
+    width: 3rem;
+}
