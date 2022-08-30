@@ -11,7 +11,7 @@ require_once '../connection.php';
             $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
                 $opcao = $row['aperitivo'];
-                echo "<option value='$opcao' >$opcao<option/>";
+                echo "<option value='$opcao' >$opcao</option>";
             }
             ?>
         </select>
@@ -20,7 +20,7 @@ require_once '../connection.php';
             $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
                 $opcao = $row['aperitivo'];
-                echo "<option value='$opcao' >$opcao<option/>";
+                echo "<option value='$opcao' >$opcao</option>";
             }
             ?>
         </select>
@@ -34,7 +34,7 @@ require_once '../connection.php';
         $select = $mysqli->query("SELECT * FROM bebidas WHERE festa = 'week'");
         while ($row = $select->fetch_assoc()) {
             $opcao = $row['bebida'];
-            echo "<option value='$opcao' >$opcao<option/>";
+            echo "<option value='$opcao' >$opcao</option>";
         }
         ?>
     </select>
@@ -52,7 +52,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM salgados_fritos");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['salgado'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -64,7 +64,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM salgados_fritos");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['salgado'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -76,7 +76,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM salgados_fritos");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['salgado'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -91,7 +91,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM salgados_assados");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['salgado'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -103,7 +103,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM salgados_assados");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['salgado'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -115,7 +115,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM salgados_assados");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['salgado'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -133,7 +133,7 @@ require_once '../connection.php';
             $select = $mysqli->query("SELECT * FROM finger WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
                 $opcao = $row['finger'];
-                echo "<option value='$opcao' >$opcao<option/>";
+                echo "<option value='$opcao' >$opcao</option>";
             }
             ?>
         </select>
@@ -143,7 +143,7 @@ require_once '../connection.php';
             $select = $mysqli->query("SELECT * FROM molhos_penne WHERE festa = '1'");
             while ($row = $select->fetch_assoc()) {
                 $opcao = $row['sabor'];
-                echo "<option value='$opcao' >$opcao<option/>";
+                echo "<option value='$opcao' >$opcao</option>";
             }
             ?>
         </select>
@@ -158,7 +158,7 @@ require_once '../connection.php';
             $select = $mysqli->query("SELECT * FROM finger_02 WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
                 $opcao = $row['finger'];
-                echo "<option value='$opcao' >$opcao<option/>";
+                echo "<option value='$opcao' >$opcao</option>";
             }
             ?>
         </select>
@@ -181,7 +181,7 @@ require_once '../connection.php';
             $select = $mysqli->query("SELECT * FROM bolos WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
                 $opcao = $row['bolo'];
-                echo "<option value='$opcao' >$opcao<option/>";
+                echo "<option value='$opcao' >$opcao</option>";
             }
             ?>
         </select>
@@ -196,7 +196,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM doces");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['doce'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -208,7 +208,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM doces");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['doce'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -220,7 +220,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM doces");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['doce'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -235,7 +235,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM doces_especiais");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['doce'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>
@@ -247,7 +247,7 @@ require_once '../connection.php';
                     $select = $mysqli->query("SELECT * FROM doces_especiais");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['doce'];
-                        echo "<option value='$opcao' >$opcao<option/>";
+                        echo "<option value='$opcao' >$opcao</option>";
                     }
                     ?>
                 </select>

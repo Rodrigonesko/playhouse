@@ -227,7 +227,7 @@ $adm = $_SESSION['adm'];
                                     <td>Decoração</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-decoracao" name="fornecedores-decoracao"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-decoracao" name="telefone-decoracao"></td>
-                                    <td><input type="text" class="page-2-input" id="data-decoracao" name="data-decoracao"></td>
+                                    <td><input type="date" class="page-2-input" id="data-decoracao" name="data-decoracao"></td>
                                     <td><input type="text" class="page-2-input" id="por-decoracao" name="por-decoracao"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-decoracao" name="confirmado-decoracao"></td>
                                 </tr>
@@ -235,7 +235,7 @@ $adm = $_SESSION['adm'];
                                     <td>Papelaria</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-papelaria" name="fornecedores-papelaria"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-papelaria" name="telefone-papelaria"></td>
-                                    <td><input type="text" class="page-2-input" id="data-papelaria" name="data-papelaria"></td>
+                                    <td><input type="date" class="page-2-input" id="data-papelaria" name="data-papelaria"></td>
                                     <td><input type="text" class="page-2-input" id="por-papelaria" name="por-papelaria"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-papelaria" name="confirmado-papelaria"></td>
                                 </tr>
@@ -243,7 +243,7 @@ $adm = $_SESSION['adm'];
                                     <td>Convite</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-convite" name="fornecedores-convite"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-convite" name="telefone-convite"></td>
-                                    <td><input type="text" class="page-2-input" id="data-convite" name="data-convite"></td>
+                                    <td><input type="date" class="page-2-input" id="data-convite" name="data-convite"></td>
                                     <td><input type="text" class="page-2-input" id="por-convite" name="por-convite"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-convite" name="confirmado-convite"></td>
                                 </tr>
@@ -251,7 +251,7 @@ $adm = $_SESSION['adm'];
                                     <td>Bolo Fake</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-bolo-fake" name="fornecedores-bolo-fake"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-bolo-fake" name="telefone-bolo-fake"></td>
-                                    <td><input type="text" class="page-2-input" id="data-bolo-fake" name="data-bolo-fake"></td>
+                                    <td><input type="date" class="page-2-input" id="data-bolo-fake" name="data-bolo-fake"></td>
                                     <td><input type="text" class="page-2-input" id="por-bolo-fake" name="por-bolo-fake"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-bolo-fake" name="confirmado-bolo-fake"></td>
                                 </tr>
@@ -259,7 +259,7 @@ $adm = $_SESSION['adm'];
                                     <td>Salgados</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-salgadados" name="fornecedores-salgadados"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-salgadados" name="telefone-salgadados"></td>
-                                    <td><input type="text" class="page-2-input" id="data-salgadados" name="data-salgadados"></td>
+                                    <td><input type="date" class="page-2-input" id="data-salgadados" name="data-salgadados"></td>
                                     <td><input type="text" class="page-2-input" id="por-salgadados" name="por-salgadados"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-salgadados" name="confirmado-salgadados"></td>
                                 </tr>
@@ -267,7 +267,7 @@ $adm = $_SESSION['adm'];
                                     <td>Doces</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-doces" name="fornecedores-doces"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-doces" name="telefone-doces"></td>
-                                    <td><input type="text" class="page-2-input" id="data-doces" name="data-doces"></td>
+                                    <td><input type="date" class="page-2-input" id="data-doces" name="data-doces"></td>
                                     <td><input type="text" class="page-2-input" id="por-doces" name="por-doces"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-doces" name="confirmado-doces"></td>
                                 </tr>
@@ -275,7 +275,7 @@ $adm = $_SESSION['adm'];
                                     <td>Bolo (espumone)</td>
                                     <td><input type="text" class="page-2-input" id="fornecedores-espumone" name="fornecedores-espumone"></td>
                                     <td><input type="text" class="page-2-input" id="telefone-espumone" name="telefone-espumone"></td>
-                                    <td><input type="text" class="page-2-input" id="data-espumone" name="data-espumone"></td>
+                                    <td><input type="date" class="page-2-input" id="data-espumone" name="data-espumone"></td>
                                     <td><input type="text" class="page-2-input" id="por-espumone" name="por-espumone"></td>
                                     <td><input type="text" class="page-2-input" id="confirmado-espumone" name="confirmado-espumone"></td>
                                 </tr>
@@ -309,7 +309,7 @@ $adm = $_SESSION['adm'];
         </section>
     </main>
 
-    <script src="js/index.js"></script>
+    <script src="js/partyRegister.js"></script>
 </body>
 
 </html>
