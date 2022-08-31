@@ -47,7 +47,7 @@ require_once '../connection.php';
         <div>
             <h4>Fritos</h4>
             <div>
-                <select name="fritos-1" id="fritos-1">
+                <select name="salgados-1" id="salgados-1">
                     <?php
                     $select = $mysqli->query("SELECT * FROM salgados_fritos");
                     while ($row = $select->fetch_assoc()) {
@@ -56,10 +56,10 @@ require_once '../connection.php';
                     }
                     ?>
                 </select>
-                <input type="number" name="quantidade-fritos-1" id="quantidade-fritos-1">
+                <input type="number" name="quantidade-salgados-1" id="quantidade-salgados-1">
             </div>
             <div>
-                <select name="fritos-2" id="fritos-2">
+                <select name="salgados-2" id="salgados-2">
                     <?php
                     $select = $mysqli->query("SELECT * FROM salgados_fritos");
                     while ($row = $select->fetch_assoc()) {
@@ -68,10 +68,10 @@ require_once '../connection.php';
                     }
                     ?>
                 </select>
-                <input type="number" name="quantidade-fritos-2" id="quantidade-fritos-2">
+                <input type="number" name="quantidade-salgados-2" id="quantidade-salgados-2">
             </div>
             <div>
-                <select name="fritos-3" id="fritos-3">
+                <select name="salgados-3" id="salgados-3">
                     <?php
                     $select = $mysqli->query("SELECT * FROM salgados_fritos");
                     while ($row = $select->fetch_assoc()) {
@@ -80,13 +80,13 @@ require_once '../connection.php';
                     }
                     ?>
                 </select>
-                <input type="number" name="quantidade-fritos-3" id="quantidade-fritos-3">
+                <input type="number" name="quantidade-salgados-3" id="quantidade-salgados-3">
             </div>
         </div>
         <div>
             <h4>Assados</h4>
             <div>
-                <select name="assados-1" id="assados-1">
+                <select name="salgados-4" id="salgados-4">
                     <?php
                     $select = $mysqli->query("SELECT * FROM salgados_assados");
                     while ($row = $select->fetch_assoc()) {
@@ -95,10 +95,10 @@ require_once '../connection.php';
                     }
                     ?>
                 </select>
-                <input type="number" name="quantidade-assados-1" id="quantidade-assados-1">
+                <input type="number" name="quantidade-salgados-4" id="quantidade-salgados-4">
             </div>
             <div>
-                <select name="assados-2" id="assados-2">
+                <select name="salgados-5" id="salgados-5">
                     <?php
                     $select = $mysqli->query("SELECT * FROM salgados_assados");
                     while ($row = $select->fetch_assoc()) {
@@ -107,10 +107,10 @@ require_once '../connection.php';
                     }
                     ?>
                 </select>
-                <input type="number" name="quantidade-assados-2" id="quantidade-assados-2">
+                <input type="number" name="quantidade-salgados-5" id="quantidade-salgados-5">
             </div>
             <div>
-                <select name="assados-3" id="assados-3">
+                <select name="salgados-6" id="salgados-6">
                     <?php
                     $select = $mysqli->query("SELECT * FROM salgados_assados");
                     while ($row = $select->fetch_assoc()) {
@@ -119,7 +119,7 @@ require_once '../connection.php';
                     }
                     ?>
                 </select>
-                <input type="number" name="quantidade-assados-3" id="quantidade-assados-3">
+                <input type="number" name="quantidade-salgados-6" id="quantidade-salgados-6">
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@ require_once '../connection.php';
 <div class="item-cardapio">
     <h3>Finger 01</h3>
     <div>
-        <select name="finter-1" id="finger-1">
+        <select name="finger-1" id="finger-1">
             <?php
             $select = $mysqli->query("SELECT * FROM finger WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
@@ -153,7 +153,7 @@ require_once '../connection.php';
 <div class="item-cardapio">
     <h3>Finger 02</h3>
     <div>
-        <select name="finter-2" id="finger-2">
+        <select name="finger-2" id="finger-2">
             <?php
             $select = $mysqli->query("SELECT * FROM finger_02 WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {
@@ -176,7 +176,7 @@ require_once '../connection.php';
     </div>
     <div class="bolo">
         <span>Bolo: </span>
-        <select name="finter-2" id="finger-2">
+        <select name="bolo" id="bolo">
             <?php
             $select = $mysqli->query("SELECT * FROM bolos WHERE festa = 'week'");
             while ($row = $select->fetch_assoc()) {

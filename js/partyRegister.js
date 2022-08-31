@@ -20,16 +20,16 @@ botaoProximo.addEventListener('click', () => {
 
     let flag = 0
 
-    Object.values(page1Items).forEach(e => {
-        if (e.value !== '') {
-            e.parentElement.classList.remove('sem-preencher')
+    // Object.values(page1Items).forEach(e => {
+    //     if (e.value !== '') {
+    //         e.parentElement.classList.remove('sem-preencher')
 
-        } else {
-            e.parentElement.classList.add('sem-preencher')
-            flag++
+    //     } else {
+    //         e.parentElement.classList.add('sem-preencher')
+    //         flag++
 
-        }
-    })
+    //     }
+    // })
 
     if (flag === 0) {
         page1.classList.remove('page-step-active')
@@ -46,16 +46,16 @@ botaoProximo2.addEventListener('click', e => {
 
     let flag = 0
 
-    Object.values(page2Items).forEach(e => {
-        if (e.value !== '') {
-            e.parentElement.classList.remove('sem-preencher')
+    // Object.values(page2Items).forEach(e => {
+    //     if (e.value !== '') {
+    //         e.parentElement.classList.remove('sem-preencher')
 
 
-        } else {
-            e.parentElement.classList.add('sem-preencher')
-            flag++
-        }
-    })
+    //     } else {
+    //         e.parentElement.classList.add('sem-preencher')
+    //         flag++
+    //     }
+    // })
 
     if (flag === 0) {
         page2.classList.remove('page-step-active')

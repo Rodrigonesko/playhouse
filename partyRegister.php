@@ -33,7 +33,7 @@ $adm = $_SESSION['adm'];
     </header>
     <main>
         <section class="section-container-register">
-            <form action="" class="form">
+            <form action="php/partyRegister/register.php" method="POST" class="form">
 
                 <h1 class="text-center">Formulário de Registro</h1>
 
@@ -300,7 +300,7 @@ $adm = $_SESSION['adm'];
 
                     <div class="containter-btn">
                         <button class="btn-next" id="btn-prev-2" type="button">Anterior</button>
-                        <button class="btn-next" id="btn-registrar" type="button">Registrar</button>
+                        <button class="btn-next" name="register" id="btn-registrar" type="submit">Registrar</button>
                     </div>
                 </div>
 
