@@ -39,9 +39,9 @@ $adm = $_SESSION['adm'];
                     <thead>
                         <tr id="header-tr">
                             <th>ID</th>
-                            <th>Festa</th>
+                            <th>Contratante</th>
                             <th>Data</th>
-                            <th>Valor</th>
+                            <th>Tipo Festa</th>
                             <th>Aniversariante</th>
                             <th>Situação</th>
                             <th>Detalhes</th>
@@ -50,7 +50,7 @@ $adm = $_SESSION['adm'];
                     <tbody>
                         <?php
 
-                        $result = $mysqli->query("SELECT id, party, date_party, value, name FROM parties");
+                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante FROM festas");
 
                         while ($row = $result->fetch_assoc()) {
 
@@ -58,10 +58,10 @@ $adm = $_SESSION['adm'];
 
                             echo "<tr class='body-tr'>";
                             echo "<td>$id</td>";
-                            echo "<td>" . $row['party'] . "</td>";
-                            echo "<td>" . transformDate($row['date_party']) . "</td>";
-                            echo "<td>" . $row['value'] . "</td>";
-                            echo "<td>" . $row['name'] . "</td>";
+                            echo "<td>" . $row['contratante'] . "</td>";
+                            echo "<td>" . transformDate($row['data_festa']) . "</td>";
+                            echo "<td>" . $row['tipo_festa'] . "</td>";
+                            echo "<td>" . $row['aniversariante'] . "</td>";
                             echo "<td>" . "Pago/A pagar" . "</td>";
                             echo "<td>
                                     <a class='details-button' href='partyDetails.php?id=$id'>Detalhes</a>

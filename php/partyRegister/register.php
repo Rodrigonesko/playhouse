@@ -239,7 +239,7 @@ if (isset($_POST['register'])) {
     VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
     $insertCardapio->bind_param(
-        "ssssssssssssssssssssssssssssssssssssssssss",
+        "ssssssssssssssssssssssssssssssssss",
         $idFesta,
         $mesaBoasVindas1,
         $mesaBoasVindas2,
@@ -256,17 +256,9 @@ if (isset($_POST['register'])) {
         $salgados6,
         $salgados7,
         $salgados8,
-        $quantidadeSalgados1,
-        $quantidadeSalgados2,
-        $quantidadeSalgados3,
-        $quantidadeSalgados4,
-        $quantidadeSalgados5,
-        $quantidadeSalgados6,
-        $quantidadeSalgados7,
-        $quantidadeSalgados8,
         $finger1,
         $finger2,
-        $miniChurros,
+        $miniChurros ,
         $brownie,
         $bolo,
         $docesSimples1,
@@ -285,4 +277,9 @@ if (isset($_POST['register'])) {
     );
 
     $insertCardapio->execute();
+
+    $_SESSION['msg'] = "<p class='success'>]Festa cadastrada com sucesso!</p>";
+
+    header('Location: ../../partyRegister.php');
+
 }

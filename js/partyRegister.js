@@ -18,51 +18,20 @@ const page2Items = document.getElementsByClassName('page-2-input')
 
 botaoProximo.addEventListener('click', () => {
 
-    let flag = 0
-
-    // Object.values(page1Items).forEach(e => {
-    //     if (e.value !== '') {
-    //         e.parentElement.classList.remove('sem-preencher')
-
-    //     } else {
-    //         e.parentElement.classList.add('sem-preencher')
-    //         flag++
-
-    //     }
-    // })
-
-    if (flag === 0) {
-        page1.classList.remove('page-step-active')
-        page2.classList.add('page-step-active')
-        progressBar.style.width = '50%'
-        progressStep2.classList.add('progress-step-active')
-    }
-
-    console.log(flag);
+    page1.classList.remove('page-step-active')
+    page2.classList.add('page-step-active')
+    progressBar.style.width = '50%'
+    progressStep2.classList.add('progress-step-active')
 
 })
 
 botaoProximo2.addEventListener('click', e => {
 
-    let flag = 0
+    page2.classList.remove('page-step-active')
+    page3.classList.add('page-step-active')
+    progressBar.style.width = '100%'
+    progressStep3.classList.add('progress-step-active')
 
-    // Object.values(page2Items).forEach(e => {
-    //     if (e.value !== '') {
-    //         e.parentElement.classList.remove('sem-preencher')
-
-
-    //     } else {
-    //         e.parentElement.classList.add('sem-preencher')
-    //         flag++
-    //     }
-    // })
-
-    if (flag === 0) {
-        page2.classList.remove('page-step-active')
-        page3.classList.add('page-step-active')
-        progressBar.style.width = '100%'
-        progressStep3.classList.add('progress-step-active')
-    }
 })
 
 botaoAnterior.addEventListener('click', e => {

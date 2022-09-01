@@ -1,49 +1,10 @@
-#main {
-    display: flex;
-    padding: 1%;
-    justify-content: space-around;
-    align-items: center;
+.subheader-container{
+    padding: 1rem;
+    text-align: center;
+    background-color: #fff;
 }
 
-.details-section-container {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 1%;
-}
-
-.title {
-    margin-bottom: 1%;
-}
-
-.subtitle {
-    margin-bottom: 1%;
-}
-
-.container-inputs {
-    margin-bottom: 1%;
-    margin-top: 1%;
-}
-
-.input-box {
-    margin: 1%;
-    font-size: 1em;
-    width: 100%;
-}
-
-.input-box input {
-    padding: 2px;
-    border-radius: 5px;
-    border: 1px solid gray;
-}
-
-.btns-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1%;
-}
-
-.btns-container button {
+button {
     border: none;
     border-radius: 5px;
     padding: 10px;
@@ -51,12 +12,8 @@
     transition: 200ms;
 }
 
-.save-button {
-    background-color: rgb(22, 83, 253);
+.btn-info:hover {
+    background-color: #43A3E6;
     color: white;
-}
-
-.save-button:hover {
     cursor: pointer;
-    background-color: rgb(0, 58, 218);
 }

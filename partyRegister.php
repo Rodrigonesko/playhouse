@@ -33,6 +33,16 @@ $adm = $_SESSION['adm'];
     </header>
     <main>
         <section class="section-container-register">
+
+            <?php
+            
+                if(isset($_SESSION['msg'])){
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+            
+            ?>
+
             <form action="php/partyRegister/register.php" method="POST" class="form">
 
                 <h1 class="text-center">Formulário de Registro</h1>
