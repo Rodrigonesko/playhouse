@@ -1,4 +1,4 @@
-.subheader-container{
+.subheader-container {
     padding: 1rem;
     text-align: center;
     background-color: #fff;
@@ -12,8 +12,44 @@ button {
     transition: 200ms;
 }
 
+.salvar-btn:hover {
+    background-color: #43A3E6;
+    color: white;
+    cursor: pointer;
+}
+
+.section-details-container {
+    padding: 1rem;
+    background-color: #fff;
+}
+
 .btn-info:hover {
     background-color: #43A3E6;
     color: white;
     cursor: pointer;
+}
+
+.info-festa-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    font-size: small;
+    border-radius: 5px;
+    box-shadow: 15px 15px 49px #9d9d9d,
+        -15px -15px 49px #ffffff;
+    padding: 1rem;
+}
+
+.info-festa-container div {
+    margin: 0.5rem;
+}
+
+input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input[type='number'] {
+    width: 3rem;
 }

@@ -6,7 +6,7 @@
     $password = $_ENV['PASS_DB'];
     $database = $_ENV['NAME_DB'];
     $host = $_ENV['HOST_DB'];
-    $port = '3306';
+    $port = '3307';
 
     $mysqli = new mysqli($host, $user, $password, $database, $port);
 
