@@ -95,7 +95,7 @@ if(isset($_POST['salvar'])){
                                                 WHERE id=? ");
     $update->execute($data);
 
-    $_SESSION['msg'] = "<p class='success'>]Atualizado com sucesso!</p>";
+    $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
 
     header("Location: ../../partyDetails.php?id=$idFesta");
     

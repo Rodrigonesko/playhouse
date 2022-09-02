@@ -41,6 +41,14 @@ $adm = $_SESSION['adm'];
                 <button id="btn-info-escala" class="btn-info">Escala</button>
             </div>
         </section>
+        <div>
+            <?php
+                if(isset($_SESSION['msg'])){
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+            ?>
+        </div>
         <section class="section-details-container" id="section-details-container">
 
         </section>

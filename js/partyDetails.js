@@ -27,3 +27,29 @@ btnInfoFesta.addEventListener('click', ()=>{
     ajax.send()
 
 })
+
+btnInfoFornecedores.addEventListener('click', ()=>{
+    const path = `components/infoFornecedores.php?id=${id}`
+    ajax.open('GET', path, true)
+    ajax.onreadystatechange = ()=>{
+        if(ajax.readyState == 4 && ajax.status == 200) {
+            const returnData = ajax.responseText
+            mainSection.innerHTML = returnData
+        }
+    }
+
+    ajax.send()
+})
+
+btnInfoCardapio.addEventListener('click', ()=>{
+    const path = `components/infoCardapio.php?id=${id}`
+    ajax.open('GET', path, true)
+    ajax.onreadystatechange = ()=>{
+        if(ajax.readyState == 4 && ajax.status == 200) {
+            const returnData = ajax.responseText
+            mainSection.innerHTML = returnData
+        }
+    }
+
+    ajax.send()
+})
