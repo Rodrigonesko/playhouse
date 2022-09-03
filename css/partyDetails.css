@@ -95,3 +95,10 @@ td, th {
 .body-tr {
     border-bottom: 1px solid black;
 }
+
+.container-cardapio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

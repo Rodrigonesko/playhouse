@@ -8,6 +8,9 @@ $row = $select->fetch_assoc();
 
 $mesaBoasVindas1 = $row['mesa_boas_vindas_1'];
 $mesaBoasVindas2 = $row['mesa_boas_vindas_2'];
+$mesaBoasVindas3 = $row['mesa_boas_vindas_3'];
+
+$entrada = $row['entrada'];
 
 $bebidaExtra = $row['bebida_extra_1'];
 
@@ -36,6 +39,7 @@ $docesSimples2 = $row['doce_simples_2'];
 $docesSimples3 = $row['doce_simples_3'];
 $docesEspeciais1 = $row['doce_especial_1'];
 $docesEspeciais2 = $row['doce_especial_2'];
+$docesEspeciais3 = $row['doce_especial_3'];
 
 $quantidadeSimples1 = $row['quantidade_doce_simples_1'];
 $quantidadeSimples2 = $row['quantidade_doce_simples_2'];
@@ -64,12 +68,12 @@ $tipoFesta = $row['tipo_festa'];
     <input type="text" name="tipo-festa" id="tipo-festa" value="<?php echo $tipoFesta ?>">
     <div class="container-cardapio">
         <div class="item-cardapio">
-            <h3>Mesa de Boas Vindas (02 Opções)</h3>
+            <h3>Mesa de Boas Vindas (03 Opções)</h3>
             <div>
                 <select name="opcao-1-mesa" id="opcao-1-mesa">
 
                     <?php
-                    $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'week'");
+                    $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['aperitivo'];
                         if ($opcao == $mesaBoasVindas1) {
@@ -82,7 +86,7 @@ $tipoFesta = $row['tipo_festa'];
                 </select>
                 <select name="opcao-2-mesa" id="opcao-2-mesa">
                     <?php
-                    $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'week'");
+                    $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['aperitivo'];
                         if ($opcao == $mesaBoasVindas2) {
@@ -93,7 +97,37 @@ $tipoFesta = $row['tipo_festa'];
                     }
                     ?>
                 </select>
+                <select name="opcao-3-mesa" id="opcao-3-mesa">
+                    <?php
+                    $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
+                    while ($row = $select->fetch_assoc()) {
+                        $opcao = $row['aperitivo'];
+                        if ($opcao == $mesaBoasVindas3) {
+                            echo "<option value='$opcao' selected>$opcao</option>";
+                            continue;
+                        }
+                        echo "<option value='$opcao' >$opcao</option>";
+                    }
+                    ?>
+                </select>
             </div>
+        </div>
+
+        <div class="item-cardapio">
+            <h3>Entrada (01 Opção)</h3>
+            <select name="entrada" id="entrada">
+                <?php
+                $select = $mysqli->query("SELECT * FROM entrada WHERE festa = 'play'");
+                while ($row = $select->fetch_assoc()) {
+                    $opcao = $row['aperitivo'];
+                    if ($opcao == $entrada) {
+                        echo "<option value='$opcao' selected>$opcao</option>";
+                        continue;
+                    }
+                    echo "<option value='$opcao' >$opcao</option>";
+                }
+                ?>
+            </select>
         </div>
 
 
@@ -102,10 +136,10 @@ $tipoFesta = $row['tipo_festa'];
             <h3>Bebida Extra</h3>
             <select name="bebidas-extras" id="bebidas-extras">
                 <?php
-                $select = $mysqli->query("SELECT * FROM bebidas WHERE festa = 'week'");
+                $select = $mysqli->query("SELECT * FROM bebidas WHERE festa = 'play'");
                 while ($row = $select->fetch_assoc()) {
                     $opcao = $row['bebida'];
-                    if($opcao == $bebidaExtra){
+                    if ($opcao == $bebidaExtra) {
                         echo "<option value='$opcao' selected>$opcao</option>";
                         continue;
                     }
@@ -169,6 +203,7 @@ $tipoFesta = $row['tipo_festa'];
                         </select>
                         <input type="number" name="quantidade-salgados-3" id="quantidade-salgados-3" value="<?php echo $quantidadeSalgados3 ?>">
                     </div>
+
                 </div>
                 <div>
                     <h4>Assados</h4>
@@ -229,7 +264,7 @@ $tipoFesta = $row['tipo_festa'];
             <div>
                 <select name="finger-1" id="finger-1">
                     <?php
-                    $select = $mysqli->query("SELECT * FROM finger WHERE festa = 'week'");
+                    $select = $mysqli->query("SELECT * FROM finger WHERE festa = 'play'");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['finger'];
                         if ($opcao == $finger1) {
@@ -258,7 +293,7 @@ $tipoFesta = $row['tipo_festa'];
             <div>
                 <select name="finger-2" id="finger-2">
                     <?php
-                    $select = $mysqli->query("SELECT * FROM finger_02 WHERE festa = 'week'");
+                    $select = $mysqli->query("SELECT * FROM finger_02 WHERE festa = 'play'");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['finger'];
                         if ($opcao == $finger2) {
@@ -289,7 +324,7 @@ $tipoFesta = $row['tipo_festa'];
                 <span>Bolo: </span>
                 <select name="bolo" id="bolo">
                     <?php
-                    $select = $mysqli->query("SELECT * FROM bolos WHERE festa = 'week'");
+                    $select = $mysqli->query("SELECT * FROM bolos");
                     while ($row = $select->fetch_assoc()) {
                         $opcao = $row['bolo'];
                         if ($opcao == $bolo) {
@@ -301,7 +336,7 @@ $tipoFesta = $row['tipo_festa'];
                     ?>
                 </select>
             </div>
-            <h4>Doces (5 opções | 3 simples e 2 especiais)</h4>
+            <h4>Doces (6 opções | 3 simples e 3 especiais)</h4>
             <div class="doces">
                 <div>
                     <h5>Simples</h5>
@@ -387,6 +422,22 @@ $tipoFesta = $row['tipo_festa'];
                             ?>
                         </select>
                         <input type="number" name="quantidade-especiais-2" id="quantidade-especiais-2" value="<?php echo $quantidadeEspecial2 ?>">
+                    </div>
+                    <div>
+                        <select name="especiais-3" id="especiais-3">
+                            <?php
+                            $select = $mysqli->query("SELECT * FROM doces_especiais");
+                            while ($row = $select->fetch_assoc()) {
+                                $opcao = $row['doce'];
+                                if ($opcao == $docesEspeciais3) {
+                                    echo "<option value='$opcao' selected>$opcao</option>";
+                                    continue;
+                                }
+                                echo "<option value='$opcao' >$opcao</option>";
+                            }
+                            ?>
+                        </select>
+                        <input type="number" name="quantidade-especiais-3" id="quantidade-especiais-3" value="<?php echo $quantidadeEspecial3 ?>">
                     </div>
                 </div>
             </div>

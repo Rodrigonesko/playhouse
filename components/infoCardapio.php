@@ -24,15 +24,15 @@ if (isset($_GET['id'])) {
     }
 
     if($tipoFesta == 'light'){
-
+        include 'infoCardapioLight.php';
     }
 
     if($tipoFesta == 'play'){
-
+        include 'infoCardapioPlay.php';
     }
 
     if($tipoFesta == 'house'){
-
+        include 'infoCardapioHouse.php';
     }
 
 }
