@@ -51,6 +51,9 @@ if (isset($_GET['id'])) {
     $folhas = $row['folhas'];
     $forminhasEspeciais = $row['forminhas_especiais'];
     $observacoes = $row['observacoes'];
+    $status = $row['status'];
+    $concluido = $row['concluido'];
+
 }
 
 ?>
@@ -58,6 +61,19 @@ if (isset($_GET['id'])) {
     <div class="info-festa-container">
         <div class="title">
             <h3>Informações da Festa</h3><input type="text" name="id" value="<?php echo $id ?>">
+            <select name="status" id="status">
+                <?php
+                $select = $mysqli->query("SELECT * FROM status");
+                while ($row = $select->fetch_assoc()) {
+                    $opcao = $row['status'];
+                    if ($opcao == $status) {
+                        echo "<option value='$opcao' selected>$opcao</option>";
+                        continue;
+                    }
+                    echo "<option value='$opcao' >$opcao</option>";
+                }
+                ?>
+            </select>
         </div>
         <div class="info-principais">
             <label for="contratante">Contratante</label>
@@ -168,6 +184,5 @@ if (isset($_GET['id'])) {
         <div class="btn-container">
             <button class="salvar-btn" name="salvar">Salvar</button>
         </div>
-
     </div>
 </form>

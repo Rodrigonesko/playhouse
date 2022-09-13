@@ -27,9 +27,6 @@ $adm = $_SESSION['adm'];
     <header>
         <?php
         include_once 'components/header.php';
-
-
-
         ?>
     </header>
     <main>
@@ -47,11 +44,32 @@ $adm = $_SESSION['adm'];
                     echo $_SESSION['msg'];
                     unset($_SESSION['msg']);
                 }
+
+                $id = $_GET['id'];
+
+                $select = $mysqli->query("SELECT concluido FROM festas WHERE id='$id'");
+
+                $row = $select->fetch_assoc();
+
+                $concluido = $row['concluido'];
+
             ?>
         </div>
+        
+        <form action="php/partyDetails/concluirFesta.php" class="form-concluir" method="POST">
+            <?php
+
+                if(!$concluido){
+                   echo "<button value='$id' class='concluir' name='concluir'>Concluir</button>";
+                }
+
+            ?>
+            
+        </form>
         <section class="section-details-container" id="section-details-container">
 
         </section>
+
     </main>
     <script src="js/partyDetails.js"></script>
 </body>

@@ -50,7 +50,7 @@ $adm = $_SESSION['adm'];
                     <tbody>
                         <?php
 
-                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante FROM festas");
+                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas");
 
                         while ($row = $result->fetch_assoc()) {
 
@@ -62,7 +62,7 @@ $adm = $_SESSION['adm'];
                             echo "<td>" . transformDate($row['data_festa']) . "</td>";
                             echo "<td>" . $row['tipo_festa'] . "</td>";
                             echo "<td>" . $row['aniversariante'] . "</td>";
-                            echo "<td>" . "Pago/A pagar" . "</td>";
+                            echo "<td>" . $row['status'] . "</td>";
                             echo "<td>
                                     <a class='details-button' href='partyDetails.php?id=$id'>Detalhes</a>
                                 </td>";

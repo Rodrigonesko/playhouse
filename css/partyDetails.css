@@ -102,3 +102,18 @@ td, th {
     align-items: center;
     flex-direction: column;
 }
+
+.form-concluir {
+    margin: 1rem;
+}
+
+.concluir {
+    background-color: rgb(17, 134, 17);
+    color: white;
+    transition: 200ms;
+}
+
+.concluir:hover {
+    cursor: pointer;
+    background-color: darkgreen;
+}

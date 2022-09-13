@@ -17,7 +17,7 @@
         }
         ?>
         <li class='nav-item'>
-            <a class='fundo' href='partyRegister.php'>Controle de Entrada</a>
+            <a class='fundo' href='controleEntrada.php'>Controle de Entrada</a>
         </li>
         <li class='nav-item'>
             <a class='fundo' href='dashboard.php'>Listagem</a>

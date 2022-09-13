@@ -13,6 +13,7 @@ $adm = $_SESSION['adm'];
 if(isset($_POST['salvar'])){
 
     $data = [
+        $status = $_POST["status"],
         $contratante = $_POST['contratante'],
         $tipoFesta = $_POST['tipo_festa'],
         $contrato = $_POST['contrato'],
@@ -57,6 +58,7 @@ if(isset($_POST['salvar'])){
 
 
     $update = $mysqli->prepare("UPDATE festas SET 
+                                                status = ?,
                                                 contratante=?,
                                                 tipo_festa =?,
                                                 contrato=?,
