@@ -279,7 +279,7 @@ if (isset($_POST['register'])) {
 
     $insertCardapio->execute();
 
-    $_SESSION['msg'] = "<p class='success'>]Festa cadastrada com sucesso!</p>";
+    $_SESSION['msg'] = "<p class='success'>Festa cadastrada com sucesso!</p>";
 
     header('Location: ../../partyRegister.php');
 

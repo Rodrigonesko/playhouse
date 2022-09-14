@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    flex-direction: column;
 }
 
 .controle-container {
@@ -44,4 +45,20 @@ input {
 .button-container button:hover {
     cursor: pointer;
     background-color: #1d5f8f;
+}
+
+.convidados-cadastrados {
+    border: 1px solid black;
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid black;
+    padding: 6px;
 }
