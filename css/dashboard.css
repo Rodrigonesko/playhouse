@@ -56,3 +56,42 @@ td, th {
     background-color: rgb(42, 110, 158);
 }
 
+.detalhes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detalhes a {
+    padding: 4px;
+    border-radius: 2px;
+    margin: 2px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-festa {
+    background-color: rgb(42, 110, 158);
+}
+
+.info-fornecedores {
+    background-color: rgb(201, 130, 0);
+}
+
+.info-cardapio {
+    background-color: brown;
+}
+
+.info-escala {
+    background-color: black;
+}
+
+.info-entrada {
+    background-color: green;
+}
+
+

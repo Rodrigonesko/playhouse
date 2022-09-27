@@ -1,0 +1,59 @@
+
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 1%;
+    transition: 200ms;
+}
+
+.salvar-btn:hover {
+    background-color: #43A3E6;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.info-fornecedores-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table-container input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+    table-layout: fixed;
+    border-top: 1px solid lightgray;
+}
+
+td, th {
+    padding: 0.5%;
+    width: 100%;
+    word-break: break-all;
+}
+
+.table-container table #header-tr{
+    border-bottom: 2px solid black;
+}
+
+.body-tr {
+    border-bottom: 1px solid black;
+}
