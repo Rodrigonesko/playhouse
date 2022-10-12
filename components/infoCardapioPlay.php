@@ -1,6 +1,6 @@
 <?php
 
-require_once '../connection.php';
+// require_once '../connection.php';
 
 $select = $mysqli->query("SELECT * FROM cardapio_festa WHERE id_festa = '$id'");
 
