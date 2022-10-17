@@ -17,10 +17,7 @@
         }
         ?>
         <li class='nav-item'>
-            <a class='fundo' href='controleEntrada.php'>Controle de Entrada</a>
-        </li>
-        <li class='nav-item'>
-            <a class='fundo' href='dashboard.php'>Listagem</a>
+            <a class='fundo' href='dashboard.php'>Não concluídas</a>
         </li>
         <li class='nav-item'>
             <a class='fundo' href='php/login/exit.php'>Sair</a>

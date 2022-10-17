@@ -59,9 +59,7 @@ $tipoFesta = $row['tipo_festa'];
 
 <link rel="stylesheet" href="css/cardapio.css">
 
-<form action="php/partyDetails/updateCardapio.php" method="POST">
-    <input type="text" name="id" value="<?php echo $id; ?>">
-    <input type="text" name="tipo-festa" id="tipo-festa" value="<?php echo $tipoFesta ?>">
+<form action="php/partyDetails/updateCardapio.php?id=<?php echo $id ?>&tipo-festa=<?php echo $tipoFesta ?>" method="POST">
     <div class="container-cardapio">
         <div class="item-cardapio">
             <h3>Mesa de Boas Vindas (02 Opções)</h3>

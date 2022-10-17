@@ -36,6 +36,14 @@ $adm = $_SESSION['adm'];
                 <div class="title">
                     <h3>Informações sobre a festa</h3>
                 </div>
+                <div class="msg">
+                    <?php
+                        if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
+                </div>
                 <div class="info-festa">
                     <?php
 
@@ -82,13 +90,15 @@ $adm = $_SESSION['adm'];
                         $observacoes = $row['observacoes'];
                         $status = $row['status'];
                         $concluido = $row['concluido'];
+
+                        $arrTiposFestas = ['week', 'light', 'play', 'house'];
                     }
 
                     ?>
-                    <form action="php/partyDetails/updateInfoFesta.php?<?php echo $id ?>" method="post">
+                    <form action="php/partyDetails/updateInfoFesta.php?id=<?php echo $id ?>" method="post">
                         <div class="info-festa-container">
                             <div class="title">
-                                <h3>Informações da Festa</h3><input type="text" name="id" value="<?php echo $id ?>">
+                                <h3>Informações da Festa</h3>
                                 <select name="status" id="status">
                                     <?php
                                     $select = $mysqli->query("SELECT * FROM status");
@@ -106,10 +116,32 @@ $adm = $_SESSION['adm'];
                             <div class="info-principais">
                                 <label for="contratante">Contratante</label>
                                 <input type="text" name="contratante" id="contratante" value="<?php echo $contratante; ?>">
-                                <label for="contratante">Tipo de Festa</label>
-                                <input type="text" name="tipo_festa" id="tipo_festa" value="<?php echo $tipoFesta; ?>">
-                                <label for="contratante">Contrato</label>
-                                <input type="text" name="contrato" id="contrato" value="<?php echo $contrato; ?>">
+                                <label for="tipo_festa">Tipo de Festa</label>
+                                <select name="tipo_festa" id="tipo_festa">
+                                    <?php
+                                    foreach ($arrTiposFestas as $festa) {
+                                        if ($festa == $tipoFesta) {
+                                            echo "<option value='$festa' selected>$festa</option>";
+                                        } else {
+                                            echo "<option value='$festa'>$festa</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                <label for="contrato">Contrato</label>
+                                <select name="contrato" id="contrato">
+                                    <?php
+                                    $arrContrato = ['Sim', 'Não'];
+                                    foreach ($arrContrato as $itemArrContrato) {
+                                        if ($contrato == $itemArrContrato) {
+                                            echo "<option value='$itemArrContrato' selected>$itemArrContrato</option>";
+                                        } else {
+                                            echo "<option value='$itemArrContrtao'>$itemArrContrato</option>";
+                                        }
+                                    }
+                                    ?>
+                                    
+                                </select>
                             </div>
                             <div class="subtitle">
                                 <h4>Informações para confirmar com os Pais</h4>

@@ -27,5 +27,5 @@ if (isset($_POST['cadastrar'])) {
 
     $_SESSION['msg'] = "<p class='success'>Convidado cadastrado com sucesso!</p>";
 
-    header("Location: ../../controleEntradaDetalhes.php?id=$id");
+    header("Location: ../../controle-entrada.php?id=$id");
 }

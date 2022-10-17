@@ -12,8 +12,8 @@ $adm = $_SESSION['adm'];
 
 if (isset($_POST['salvar'])) {
 
-    $tipoFesta = $_POST['tipo-festa'];
-    $id = $_POST['id'];
+    $tipoFesta = $_GET['tipo-festa'];
+    $id = $_GET['id'];
 
     if (isset($_POST['refrigerante'])) {
         $refrigerante = 'Sim';
@@ -370,5 +370,5 @@ if (isset($_POST['salvar'])) {
 
     $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
 
-    header("Location: ../../partyDetails.php?id=$id");
+    header("Location: ../../info-cardapio.php?id=$id");
 }

@@ -101,6 +101,8 @@ $adm = $_SESSION['adm'];
             $dataEspumone = $row['data'];
             $porEspumone = $row['por'];
             $confirmadoEspumone = $row['confirmado'];
+
+            $opcoesConfirmado = ['Sim', 'Não', 'Pré-reserva'];
         }
         ?>
     </header>
@@ -108,7 +110,15 @@ $adm = $_SESSION['adm'];
         <form action="php/partyDetails/updateInfoFornecedores.php?id=<?php echo $id ?>" method="post">
             <div class="info-fornecedores-container">
                 <div class="title">
-                    <h3>Informações dos Fornecedores</h3><input type="text" name="id" value="<?php echo $id ?>">
+                    <h3>Informações dos Fornecedores</h3>
+                </div>
+                <div class="msg">
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
                 </div>
                 <div class="table-container">
                     <table>
@@ -129,7 +139,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefoneDecoracao ?>" id="telefone-decoracao" name="telefone-decoracao"></td>
                                 <td><input type="date" value="<?php echo $dataDecoracao ?>" id="data-decoracao" name="data-decoracao"></td>
                                 <td><input type="text" value="<?php echo $porDecoracao ?>" id="por-decoracao" name="por-decoracao"></td>
-                                <td><input type="text" value="<?php echo $confirmadoDecoracao ?>" id="confirmado-decoracao" name="confirmado-decoracao"></td>
+                                <td><select name="confirmado-decoracao" id="confirmado-decoracao">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoDecoracao) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Papelaria</td>
@@ -137,7 +157,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefonePapelaria ?>" id="telefone-papelaria" name="telefone-papelaria"></td>
                                 <td><input type="date" value="<?php echo $dataPapelaria ?>" id="data-papelaria" name="data-papelaria"></td>
                                 <td><input type="text" value="<?php echo $porPapelaria ?>" id="por-papelaria" name="por-papelaria"></td>
-                                <td><input type="text" value="<?php echo $confirmadoPapelaria ?>" id="confirmado-papelaria" name="confirmado-papelaria"></td>
+                                <td><select name="confirmado-papelaria" id="confirmado-papelaria">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoPapelaria) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Convite</td>
@@ -145,7 +175,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefoneConvite ?>" id="telefone-convite" name="telefone-convite"></td>
                                 <td><input type="date" value="<?php echo $dataConvite ?>" id="data-convite" name="data-convite"></td>
                                 <td><input type="text" value="<?php echo $porConvite ?>" id="por-convite" name="por-convite"></td>
-                                <td><input type="text" value="<?php echo $confirmadoConvite ?>" id="confirmado-convite" name="confirmado-convite"></td>
+                                <td><select name="confirmado-convite" id="confirmado-convite">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoConvite) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Bolo Fake</td>
@@ -153,7 +193,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefoneBoloFake ?>" id="telefone-bolo-fake" name="telefone-bolo-fake"></td>
                                 <td><input type="date" value="<?php echo $dataBoloFake ?>" id="data-bolo-fake" name="data-bolo-fake"></td>
                                 <td><input type="text" value="<?php echo $porBoloFake ?>" id="por-bolo-fake" name="por-bolo-fake"></td>
-                                <td><input type="text" value="<?php echo $confirmadoBoloFake ?>" id="confirmado-bolo-fake" name="confirmado-bolo-fake"></td>
+                                <td><select name="confirmado-bolo-fake" id="confirmado-bolo-fake">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoBoloFake) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Salgados</td>
@@ -161,7 +211,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefoneSalgados ?>" id="telefone-salgados" name="telefone-salgados"></td>
                                 <td><input type="date" value="<?php echo $dataSalgados ?>" id="data-salgados" name="data-salgados"></td>
                                 <td><input type="text" value="<?php echo $porSalgados ?>" id="por-salgados" name="por-salgados"></td>
-                                <td><input type="text" value="<?php echo $confirmadoSalgados ?>" id="confirmado-salgados" name="confirmado-salgados"></td>
+                                <td><select name="confirmado-salgados" id="confirmado-salgados">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoSalgados) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Doces</td>
@@ -169,7 +229,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefoneDoces ?>" id="telefone-doces" name="telefone-doces"></td>
                                 <td><input type="date" value="<?php echo $dataDoces ?>" id="data-doces" name="data-doces"></td>
                                 <td><input type="text" value="<?php echo $porDoces ?>" id="por-doces" name="por-doces"></td>
-                                <td><input type="text" value="<?php echo $confirmadoDoces ?>" id="confirmado-doces" name="confirmado-doces"></td>
+                                <td><select name="confirmado-doces" id="confirmado-doces">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoDoces) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Bolo (espumone)</td>
@@ -177,7 +247,17 @@ $adm = $_SESSION['adm'];
                                 <td><input type="text" value="<?php echo $telefoneEspumone ?>" id="telefone-espumone" name="telefone-espumone"></td>
                                 <td><input type="date" value="<?php echo $dataEspumone ?>" id="data-espumone" name="data-espumone"></td>
                                 <td><input type="text" value="<?php echo $porEspumone ?>" id="por-espumone" name="por-espumone"></td>
-                                <td><input type="text" value="<?php echo $confirmadoEspumone ?>" id="confirmado-espumone" name="confirmado-espumone"></td>
+                                <td><select name="confirmado-espumone" id="confirmado-espumone">
+                                        <?php
+                                        foreach ($opcoesConfirmado as $opcaoConfirmado) {
+                                            if ($opcaoConfirmado == $confirmadoEspumone) {
+                                                echo "<option value='$opcaoConfirmado' selected>$opcaoConfirmado</option>";
+                                            } else {
+                                                echo "<option value='$opcaoConfirmado'>$opcaoConfirmado</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select></td>
                             </tr>
                         </tbody>
                     </table>

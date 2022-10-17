@@ -20,7 +20,8 @@ $adm = $_SESSION['adm'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/controleEntradaDetalhes.css">
+    <link rel="stylesheet" href="css/controle-entrada.css">
+    <script src="./js/controleEntrada.js" defer></script>
     <title>Controle de Entrada</title>
 </head>
 
@@ -79,22 +80,25 @@ $adm = $_SESSION['adm'];
                             <th>Nome</th>
                             <th>Idade</th>
                             <th>Horario</th>
+                            <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
-                        $select = $mysqli->query("SELECT nome_convidado, idade, data FROM controle_entrada WHERE id_festa='$id'");
+                        $select = $mysqli->query("SELECT nome_convidado, idade, id ,data FROM controle_entrada WHERE id_festa='$id'");
 
                         while ($row = $select->fetch_assoc()) {
 
                             $horario = explode(' ', $row['data']);
                             $horario = $horario[1];
+                            $idConvidado = $row['id'];
 
                             echo "<tr>";
-                            echo "<td>" . $row['nome_convidado'] . "</td>";
-                            echo "<td>" . $row['idade'] . "</td>";
+                            echo "<td class='nome-convidado'>" . $row['nome_convidado'] . "</td>";
+                            echo "<td class='idade-convidado'>" . $row['idade'] . "</td>";
                             echo "<td>" . $horario . "</td>";
+                            echo "<td><button class='editar-convidado' value='$idConvidado'>Editar</button></td>";
                             echo "</tr>";
                         }
 

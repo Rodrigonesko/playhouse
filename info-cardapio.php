@@ -20,8 +20,7 @@ $adm = $_SESSION['adm'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-
+    <link rel="stylesheet" href="css/info-cardapio.css">
     <title>Cardápio</title>
 </head>
 
@@ -45,8 +44,8 @@ $adm = $_SESSION['adm'];
     </header>
     <main>
 
-        <section>
-            <div>
+        <section class="section-info-cardapio-container">
+            <div class="info-cardapio-container">
                 <div class="title">
                     <h3>Cardápio <span id="tipo-festa"><?php echo $tipoFesta ?></span></h3>
                 </div>
@@ -54,7 +53,15 @@ $adm = $_SESSION['adm'];
                     <p>Contratante: <span id="contrantante"><?php echo $contratante ?></span></p>
                     <p>Aniversariante: <span id="aniversariante"><?php echo $aniversariante ?></span></p>
                 </div>
-                <div>
+                <div class="msg">
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </div>
+                <div class="info-cardapio">
                     <?php
                     switch ($tipoFesta) {
                         case 'week':
@@ -70,7 +77,7 @@ $adm = $_SESSION['adm'];
                             include 'components/infoCardapioHouse.php';
                             break;
                         default:
-                            
+
                             break;
                     }
                     ?>

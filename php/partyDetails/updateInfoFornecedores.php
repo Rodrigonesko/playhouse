@@ -12,7 +12,7 @@ $adm = $_SESSION['adm'];
 
 if (isset($_POST['salvar'])) {
 
-    $idFesta = $_POST['id'];
+    $idFesta = $_GET['id'];
 
     //Decoração
 
@@ -122,6 +122,6 @@ if (isset($_POST['salvar'])) {
 
     $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
 
-    header("Location: ../../partyDetails.php?id=$idFesta");
+    header("Location: ../../info-fornecedores.php?id=$idFesta");
     
 }

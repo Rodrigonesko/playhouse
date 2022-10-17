@@ -1,0 +1,47 @@
+.title {
+    margin: 1rem;
+}
+
+.section-info-cardapio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.info-cardapio-container {
+    width: 100%;
+    text-align: center;
+}
+
+.info-cardapio {
+    width: 100%;
+    text-align: center;
+}
+
+.container-cardapio {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-container {
+    margin: 1rem;
+}
+
+.salvar-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    background-color: #43A3E6;
+    color: white;
+    font-weight: 600;
+    transition: 200ms;
+}
+
+.salvar-btn:hover {
+    cursor: pointer;
+    background-color: #197abe;
+} 

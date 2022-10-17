@@ -1,4 +1,6 @@
-
+.title {
+    margin: 1rem;
+}
 
 button {
     border: none;
@@ -30,7 +32,7 @@ button {
     flex-direction: column;
 }
 
-.table-container input{
+.table-container input, select{
     border: 1px solid gray;
     border-radius: 5px;
     padding: 7px;

@@ -50,7 +50,7 @@ if(isset($_POST['salvar'])){
         $folhas = $_POST['folhas'],
         $formihasEspeciais = $_POST['forminhas_especiais'],
         $observacoes = $_POST['observacoes'],
-        $idFesta = $_POST['id']
+        $idFesta = $_GET['id']
     ];
 
 
@@ -99,7 +99,7 @@ if(isset($_POST['salvar'])){
 
     $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
 
-    header("Location: ../../partyDetails.php?id=$idFesta");
+    header("Location: ../../info-festa.php?id=$idFesta");
     
 
 }

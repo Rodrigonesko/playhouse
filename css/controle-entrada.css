@@ -58,7 +58,17 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     border-bottom: 1px solid black;
     padding: 6px;
+}
+
+.editar-convidado {
+    padding: 7px;
+    border: none;
+    background-color: #43A3E6;
+    color: white;
+    border-radius: 7px;
+    transition: 200ms;
 }
