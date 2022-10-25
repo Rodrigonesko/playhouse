@@ -72,3 +72,26 @@ td {
     border-radius: 7px;
     transition: 200ms;
 }
+
+.salvar-convidado {
+    padding: 7px;
+    border: none;
+    background-color: rgb(0, 189, 0);
+    color: white;
+    border-radius: 7px;
+    transition: 200ms;
+}
+
+.editar-convidado:hover {
+    cursor: pointer;
+    background-color: #1d5f8f;
+}
+
+.salvar-convidado:hover {
+    cursor: pointer;
+    background-color: rgb(1, 117, 1);
+}
+
+.none {
+    display: none;
+}

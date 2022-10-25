@@ -74,6 +74,9 @@ $adm = $_SESSION['adm'];
                 </form>
             </div>
             <div class="convidados-cadastrados">
+                <div id="convidado-atualizado">
+
+                </div>
                 <table>
                     <thead>
                         <tr>
