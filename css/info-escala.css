@@ -1,3 +1,13 @@
+.section-escala-container {
+    padding: 1rem;
+}
+
+.escala {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid black;
+}
+
 .row {
     display: flex;
 }
@@ -25,13 +35,34 @@
     outline: 0;
 }
 
-.input-single .input:focus, .input:valid {
+.input-single .input:focus,
+.input:valid {
     border: 2px solid cornflowerblue;
 }
 
 
-.input-single .input:focus ~ label, .input:valid ~ label{
+.input-single .input:focus~label,
+.input:valid~label {
     transform: translateY(-24px);
     font-size: 12px;
     color: cornflowerblue;
+}
+
+.btn-container {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.btn-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(67, 163, 230);
+    color: white;
+    transition: 200ms;
+}
+
+.btn-container button:hover{
+    background-color: rgb(32, 129, 199);
+    cursor: pointer;
 }
