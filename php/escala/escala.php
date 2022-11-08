@@ -12,7 +12,6 @@ $adm = $_SESSION['adm'];
 
 if (isset($_POST['salvar'])) {
     $id = $_GET['id'];
-    echo $id;
 
     $select = $mysqli->query("SELECT * FROM escala WHERE id_festa = '$id'");
 
@@ -39,6 +38,7 @@ if (isset($_POST['salvar'])) {
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Balões')");
     }
 
+    /*---------------- Update Gerente ---------------*/
 
     $dados = [
         $nomeGerente = $_POST['nome-gerente'],
@@ -54,6 +54,8 @@ if (isset($_POST['salvar'])) {
 
     $update->execute($dados);
 
+    /*---------------- Update Chefe ---------------*/
+
     $dados = [
         $nomeChefe = $_POST['nome-chefe'],
         $telefoneChefe = $_POST['telefone-chefe'],
@@ -68,32 +70,157 @@ if (isset($_POST['salvar'])) {
 
     $update->execute($dados);
 
-    /* --------------- */
+    /*---------------- Update Auxiliares Cozinha ---------------*/
 
     $select = $mysqli->query("SELECT * FROM escala WHERE id_festa='$id' AND cargo='Auxiliar'");
 
+    $flag = 0;
+
     while ($row = $select->fetch_assoc()) {
-    
+
         $idAuxiliar = $row['id'];
 
         $dados = [
-            $nomesAuxiliares = $_POST['nome-auxiliar'],
-            $telefonesAuxiliares = $_POST['telefone-auxiliar'],
-            $horariosAuxiliares = $_POST['horario-auxiliar'],
-            $valorAuxliares = $_POST['valor-auxiliar'],
-            $posicaoAuxiliares = $_POST['posicao-auxiliar'],
+            $nomesAuxiliares = $_POST['nome-auxiliar'][$flag],
+            $telefonesAuxiliares = $_POST['telefone-auxiliar'][$flag],
+            $horariosAuxiliares = $_POST['horario-auxiliar'][$flag],
+            $valorAuxliares = $_POST['valor-auxiliar'][$flag],
+            $posicaoAuxiliares = $_POST['posicao-auxiliar'][$flag],
             $idAuxiliar
         ];
 
+        $flag++;
+
         $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id=?");
 
-
+        $update->execute($dados);
     }
 
- 
+    $flag = 0;
+
+    /*---------------- Update Copa ---------------*/
+
+    $dados = [
+        $nomeChefe = $_POST['nome-copa'],
+        $telefoneChefe = $_POST['telefone-copa'],
+        $horarioChefe = $_POST['horario-copa'],
+        $valorChefe = $_POST['valor-copa'],
+        $posicaoChefe = $_POST['posicao-copa'],
+        $id,
+        'Copa'
+    ];
+
+    $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id_festa=? AND cargo=?");
+
+    $update->execute($dados);
+
+    /*---------------- Update Garçons ---------------*/
+
+    $select = $mysqli->query("SELECT * FROM escala WHERE id_festa='$id' AND cargo='Garçom'");
+
+    $flag = 0;
+
+    while ($row = $select->fetch_assoc()) {
+
+        $idGarcom = $row['id'];
+
+        $dados = [
+            $nomesGarcons = $_POST['nome-garcom'][$flag],
+            $telefonesGarcons = $_POST['telefone-garcom'][$flag],
+            $horariosGarcons = $_POST['horario-garcom'][$flag],
+            $valorGarcons = $_POST['valor-garcom'][$flag],
+            $posicaoGarcons = $_POST['posicao-garcom'][$flag],
+            $idGarcom
+        ];
+
+        $flag++;
+
+        $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id=?");
+
+        $update->execute($dados);
+    }
+
+    $flag = 0;
+
+    /*---------------- Update Portaria ---------------*/
+
+    $dados = [
+        $nomePortaria = $_POST['nome-portaria'],
+        $telefonePortaria = $_POST['telefone-portaria'],
+        $horarioPortaria = $_POST['horario-portaria'],
+        $valorPortaria = $_POST['valor-portaria'],
+        $posicaoPortaria = $_POST['posicao-portaria'],
+        $id,
+        'Portaria'
+    ];
+
+    $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id_festa=? AND cargo=?");
+
+    $update->execute($dados);
+
+    /*---------------- Update Recepção ---------------*/
+
+    $dados = [
+        $nomeRecepcao = $_POST['nome-recepcao'],
+        $telefoneRecepcao = $_POST['telefone-recepcao'],
+        $horarioRecepcao = $_POST['horario-recepcao'],
+        $valorRecepcao = $_POST['valor-recepcao'],
+        $posicaoRecepcao = $_POST['posicao-recepcao'],
+        $id,
+        'Recepção'
+    ];
+
+    $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id_festa=? AND cargo=?");
+
+    $update->execute($dados);
 
     var_dump($telefonesAuxiliares);
 
-    //echo "$nomeGerente, $telefoneGerente, $horarioGerente, $posicaoGerente, $valorGerente";
+    /*---------------- Update Garçons ---------------*/
 
+    $select = $mysqli->query("SELECT * FROM escala WHERE id_festa='$id' AND cargo='Monitor'");
+
+    $flag = 0;
+
+    while ($row = $select->fetch_assoc()) {
+
+        $idMonitor = $row['id'];
+
+        $dados = [
+            $nomesMonitores = $_POST['nome-monitor'][$flag],
+            $telefonesMonitores = $_POST['telefone-monitor'][$flag],
+            $horariosMonitores = $_POST['horario-monitor'][$flag],
+            $valorMonitores = $_POST['valor-monitor'][$flag],
+            $posicaoMonitores = $_POST['posicao-monitor'][$flag],
+            $idMonitor
+        ];
+
+        $flag++;
+
+        $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id=?");
+
+        $update->execute($dados);
+    }
+
+    $flag = 0;
+
+    /*---------------- Update Balões ---------------*/
+
+    $dados = [
+        $nomeBaloes = $_POST['nome-baloes'],
+        $telefoneBaloes = $_POST['telefone-baloes'],
+        $horarioBaloes = $_POST['horario-baloes'],
+        $valorBaloes = $_POST['valor-baloes'],
+        $posicaoBaloes = $_POST['posicao-baloes'],
+        $id,
+        'Balões'
+    ];
+
+    $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id_festa=? AND cargo=?");
+
+    $update->execute($dados);
+
+    $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
+
+    header("Location: ../../info-escala.php?id=$id");
 }

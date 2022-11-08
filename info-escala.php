@@ -9,6 +9,7 @@ if (!isset($_SESSION['id'])) {
 }
 $name = $_SESSION['name'];
 $adm = $_SESSION['adm'];
+error_reporting(0);
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +52,46 @@ $adm = $_SESSION['adm'];
         $valorChefe = $arrAux['valor'];
         $posicaoChefe = $arrAux['posicao'];
 
+        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa = '$id' AND cargo='Copa'");
+
+        $arrAux = $select->fetch_assoc();
+
+        $nomeCopa = $arrAux['nome'];
+        $telefoneCopa = $arrAux['telefone'];
+        $horarioCopa = $arrAux['horario'];
+        $valorCopa = $arrAux['valor'];
+        $posicaoCopa = $arrAux['posicao'];
+
+        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa = '$id' AND cargo='Portaria'");
+
+        $arrAux = $select->fetch_assoc();
+
+        $nomePortaria = $arrAux['nome'];
+        $telefonePortaria = $arrAux['telefone'];
+        $horarioPortaria = $arrAux['horario'];
+        $valorPortaria = $arrAux['valor'];
+        $posicaoPortaria = $arrAux['posicao'];
+
+        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa = '$id' AND cargo='Recepção'");
+
+        $arrAux = $select->fetch_assoc();
+
+        $nomeRecepcao = $arrAux['nome'];
+        $telefoneRecepcao = $arrAux['telefone'];
+        $horarioRecepcao = $arrAux['horario'];
+        $valorRecepcao = $arrAux['valor'];
+        $posicaoRecepcao = $arrAux['posicao'];
+
+        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa = '$id' AND cargo='Balões'");
+
+        $arrAux = $select->fetch_assoc();
+
+        $nomeBaloes = $arrAux['nome'];
+        $telefoneBaloes = $arrAux['telefone'];
+        $horarioBaloes = $arrAux['horario'];
+        $valorBaloes = $arrAux['valor'];
+        $posicaoBaloes = $arrAux['posicao'];
+
         ?>
     </header>
     <main>
@@ -58,6 +99,14 @@ $adm = $_SESSION['adm'];
             <div class="escala-container">
                 <div class="title">
                     <h3>Escala</h3>
+                </div>
+                <div class="msg">
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
                 </div>
                 <form action="php/escala/escala.php?id=<?php echo $id ?>" method="post">
                     <div class="escala">
@@ -129,10 +178,10 @@ $adm = $_SESSION['adm'];
 
                         for ($i = 1; $i <= 3; $i++) {
 
-                            $nome = $arrAuxiliares[$i-1][0];
-                            $telefone = $arrAuxiliares[$i-1][1];
-                            $horario = $arrAuxiliares[$i-1][2];
-                            $valor = $arrAuxiliares[$i-1][4];
+                            $nome = $arrAuxiliares[$i - 1][0];
+                            $telefone = $arrAuxiliares[$i - 1][1];
+                            $horario = $arrAuxiliares[$i - 1][2];
+                            $valor = $arrAuxiliares[$i - 1][4];
 
                             echo "
                         <div class='row'>
@@ -167,15 +216,15 @@ $adm = $_SESSION['adm'];
                         </div>
                         <div class="row">
                             <div class="input-single">
-                                <input type="text" name="nome-copa" id="nome-copa" class="input">
+                                <input type="text" name="nome-copa" id="nome-copa" class="input" value="<?php echo $nomeCopa ?>">
                                 <label for="nome-copa">Copa</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="telefone-copa" id="telefone-copa" class="input">
+                                <input type="text" name="telefone-copa" id="telefone-copa" class="input" value="<?php echo $telefoneCopa ?>">
                                 <label for="telefone-copa">Telefone</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="horario-copa" id="horario-copa" class="input">
+                                <input type="text" name="horario-copa" id="horario-copa" class="input" value="<?php echo $horarioCopa ?>">
                                 <label for="horario-copa">Horário</label>
                             </div>
                             <div class="input-single">
@@ -183,32 +232,51 @@ $adm = $_SESSION['adm'];
                                 <label for="posicao-copa">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-copa" id="valor-copa" class="input">
+                                <input type="text" name="valor-copa" id="valor-copa" class="input" value="<?php echo $valorCopa ?>">
                                 <label for="valor-copa">Valor</label>
                             </div>
                         </div>
                         <?php
+
+                        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa='$id' AND cargo='Garçom'");
+
+                        while ($row = $select->fetch_assoc()) {
+                            $arrGarcons[] = [
+                                $row['nome'],
+                                $row['telefone'],
+                                $row['horario'],
+                                $row['posicao'],
+                                $row['valor']
+                            ];
+                        }
+
                         for ($i = 1; $i <= 5; $i++) {
+
+                            $nome = $arrGarcons[$i - 1][0];
+                            $telefone = $arrGarcons[$i - 1][1];
+                            $horario = $arrGarcons[$i - 1][2];
+                            $valor = $arrGarcons[$i - 1][4];
+
                             echo "
                         <div class='row'>
                         <div class='input-single'>
-                            <input type='text' name='nome-garcom-$i' id='nome-garcom-$i' class='input'>
+                            <input type='text' name='nome-garcom[]' id='nome-garcom-$i' class='input' value='$nome'>
                             <label for='nome-garcom-$i'>Garçom</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='telefone-garcom-$i' id='telefone-garcom-$i' class='input'>
+                            <input type='text' name='telefone-garcom[]' id='telefone-garcom-$i' class='input' value='$telefone'>
                             <label for='telefone-garcom-$i'>Telefone</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='horario-garcom-$i' id='horario-garcom-$i' class='input'>
+                            <input type='text' name='horario-garcom[]' id='horario-garcom-$i' class='input' value='$horario'>
                             <label for='horario-garcom-$i'>Horário</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='posicao-garcom-$i' id='posicao-garcom-$i' class='input' value='Garçom'>
+                            <input type='text' name='posicao-garcom[]' id='posicao-garcom-$i' class='input' value='Garçom'>
                             <label for='posicao-garcom-$i'>Posição</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='valor-garcom-$i' id='valor-garcom-$i' class='input'>
+                            <input type='text' name='valor-garcom[]' id='valor-garcom-$i' class='input' value='$valor'>
                             <label for='valor-garcom-$i'>Valor</label>
                         </div>
                     </div>
@@ -222,15 +290,15 @@ $adm = $_SESSION['adm'];
                         </div>
                         <div class="row">
                             <div class="input-single">
-                                <input type="text" name="nome-portaria" id="nome-portaria" class="input">
+                                <input type="text" name="nome-portaria" id="nome-portaria" class="input" value="<?php echo $nomePortaria ?>">
                                 <label for="nome-portaria">Portaria</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="telefone-portaria" id="telefone-portaria" class="input">
+                                <input type="text" name="telefone-portaria" id="telefone-portaria" class="input" value="<?php echo $telefonePortaria ?>">
                                 <label for="telefone-portaria">Telefone</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="horario-portaria" id="horario-portaria" class="input">
+                                <input type="text" name="horario-portaria" id="horario-portaria" class="input" value="<?php echo $horarioPortaria ?>">
                                 <label for="horario-portaria">Horário</label>
                             </div>
                             <div class="input-single">
@@ -238,7 +306,7 @@ $adm = $_SESSION['adm'];
                                 <label for="posicao-portaria">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-portaria" id="valor-portaria" class="input">
+                                <input type="text" name="valor-portaria" id="valor-portaria" class="input" value="<?php echo $valorPortaria ?>">
                                 <label for="valor-portaria">Valor</label>
                             </div>
                         </div>
@@ -249,15 +317,15 @@ $adm = $_SESSION['adm'];
                         </div>
                         <div class="row">
                             <div class="input-single">
-                                <input type="text" name="nome-recepcao" id="nome-recepcao" class="input">
+                                <input type="text" name="nome-recepcao" id="nome-recepcao" class="input" value="<?php echo $nomeRecepcao ?>">
                                 <label for="nome-recepcao">Recepção</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="telefone-recepcao" id="telefone-recepcao" class="input">
+                                <input type="text" name="telefone-recepcao" id="telefone-recepcao" class="input" value="<?php echo $telefoneRecepcao ?>">
                                 <label for="telefone-recepcao">Telefone</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="horario-recepcao" id="horario-recepcao" class="input">
+                                <input type="text" name="horario-recepcao" id="horario-recepcao" class="input" value="<?php echo $horarioRecepcao ?>">
                                 <label for="horario-recepcao">Horário</label>
                             </div>
                             <div class="input-single">
@@ -265,7 +333,7 @@ $adm = $_SESSION['adm'];
                                 <label for="posicao-recepcao">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-recepcao" id="valor-recepcao" class="input">
+                                <input type="text" name="valor-recepcao" id="valor-recepcao" class="input" value="<?php echo $valorRecepcao ?>">
                                 <label for="valor-recepcao">Valor</label>
                             </div>
                         </div>
@@ -275,27 +343,46 @@ $adm = $_SESSION['adm'];
                             <h4>Monitores</h4>
                         </div>
                         <?php
+
+                        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa='$id' AND cargo='Monitor'");
+
+                        while ($row = $select->fetch_assoc()) {
+                            $arrMonitores[] = [
+                                $row['nome'],
+                                $row['telefone'],
+                                $row['horario'],
+                                $row['posicao'],
+                                $row['valor']
+                            ];
+                        }
+
                         for ($i = 1; $i <= 6; $i++) {
+
+                            $nome = $arrMonitores[$i - 1][0];
+                            $telefone = $arrMonitores[$i - 1][1];
+                            $horario = $arrMonitores[$i - 1][2];
+                            $valor = $arrMonitores[$i - 1][4];
+
                             echo "
                         <div class='row'>
                         <div class='input-single'>
-                            <input type='text' name='nome-monitor-$i' id='nome-monitor-$i' class='input'>
+                            <input type='text' name='nome-monitor[]' id='nome-monitor-$i' class='input' value='$nome'>
                             <label for='nome-monitor-$i'>Monitor</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='telefone-monitor-$i' id='telefone-monitor-$i' class='input'>
+                            <input type='text' name='telefone-monitor[]' id='telefone-monitor-$i' class='input' value='$telefone'>
                             <label for='telefone-monitor-$i'>Telefone</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='horario-monitor-$i' id='horario-monitor-$i' class='input'>
+                            <input type='text' name='horario-monitor[]' id='horario-monitor-$i' class='input' value='$horario'>
                             <label for='horario-monitor-$i'>Horário</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='posicao-monitor-$i' id='posicao-monitor-$i' class='input' value='Monitor'>
+                            <input type='text' name='posicao-monitor[]' id='posicao-monitor-$i' class='input' value='Monitor'>
                             <label for='posicao-monitor-$i'>Posição</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='valor-monitor-$i' id='valor-monitor-$i' class='input'>
+                            <input type='text' name='valor-monitor[]' id='valor-monitor-$i' class='input' value='$valor'>
                             <label for='valor-monitor-$i'>Valor</label>
                         </div>
                     </div>
@@ -309,15 +396,15 @@ $adm = $_SESSION['adm'];
                         </div>
                         <div class="row">
                             <div class="input-single">
-                                <input type="text" name="nome-baloes" id="nome-baloes" class="input">
+                                <input type="text" name="nome-baloes" id="nome-baloes" class="input" value="<?php echo $nomeBaloes ?>">
                                 <label for="nome-baloes">Balões</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="telefone-baloes" id="telefone-baloes" class="input">
+                                <input type="text" name="telefone-baloes" id="telefone-baloes" class="input" value="<?php echo $telefoneBaloes ?>">
                                 <label for="telefone-baloes">Telefone</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="horario-baloes" id="horario-baloes" class="input">
+                                <input type="text" name="horario-baloes" id="horario-baloes" class="input" value="<?php echo $horarioBaloes ?>">
                                 <label for="horario-baloes">Horário</label>
                             </div>
                             <div class="input-single">
@@ -325,7 +412,7 @@ $adm = $_SESSION['adm'];
                                 <label for="posicao-baloes">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-baloes" id="valor-baloes" class="input">
+                                <input type="text" name="valor-baloes" id="valor-baloes" class="input" value="<?php echo $valorBaloes ?>">
                                 <label for="valor-baloes">Valor</label>
                             </div>
                         </div>
