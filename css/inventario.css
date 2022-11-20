@@ -1,0 +1,82 @@
+.section-inventario-container {
+    padding: 1rem;
+}
+
+.title {
+    margin: 1rem;
+}
+
+.filters {
+    padding: 1rem;
+}
+
+.adicionar-itens {
+    margin-top: 1rem;
+}
+
+.input-box {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-box input, .input-box select {
+    padding: 4px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+.button-adicionar, .btn {
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    background-color: rgb(67, 163, 230);
+    transition: 200ms;
+}
+
+.button-adicionar:hover {
+    cursor: pointer;
+    background-color: rgb(42, 110, 158);
+}
+
+.inventario {
+    margin: 1rem;
+}
+
+.table-inventario {
+    border-collapse: collapse;
+    text-align: center;
+    table-layout: fixed;
+    border-top: 1px solid lightgray;
+}
+
+.table-inventario td, th {
+    padding: 5px;
+}
+
+.table-inventario input {
+    width: 4rem;
+    padding: 3px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.salvar-valor {
+    background-color: rgb(56, 189, 22);
+}
+
+.salvar-valor:hover {
+    background-color: rgb(37, 122, 16);
+    cursor: pointer;
+}
+
+.excluir-item {
+    background-color: rgb(209, 10, 10);
+}
+
+.excluir-item:hover {
+    cursor: pointer;
+    background-color: rgb(141, 1, 1);
+}

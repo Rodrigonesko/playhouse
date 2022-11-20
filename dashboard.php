@@ -20,6 +20,7 @@ $adm = $_SESSION['adm'];
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
     <title>Dashboard</title>
 </head>
 
@@ -31,10 +32,19 @@ $adm = $_SESSION['adm'];
     </header>
     <main>
         <section class="parties-section-container">
+            <div>
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
+            </div>
             <div class="filters">
                 <h3>Filtros</h3>
             </div>
             <div class="table-container">
+
                 <table>
                     <thead>
                         <tr id="header-tr">
@@ -50,13 +60,21 @@ $adm = $_SESSION['adm'];
                     <tbody>
                         <?php
 
-                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas");
+                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido is Null");
 
                         while ($row = $result->fetch_assoc()) {
 
                             $id = $row['id'];
+                            $contratante = $row['contratante'];
 
-                            echo "<tr class='body-tr'>";
+                            if ($row['status'] == '' || $row['status'] == 'A pagar') {
+                                echo "<tr class='status-a-pagar body-tr'>";
+                            } else if ($row['status'] == 'Pré pago') {
+                                echo "<tr class='status-pre-pago body-tr'>";
+                            } else {
+                                echo "<tr class='body-tr'>";
+                            }
+
                             echo "<td>$id</td>";
                             echo "<td>" . $row['contratante'] . "</td>";
                             echo "<td>" . transformDate($row['data_festa']) . "</td>";
@@ -93,16 +111,71 @@ $adm = $_SESSION['adm'];
                                     <path d='M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z'/>
                                 </svg>
                             </a>
+                            <button class='abrir-modal' value='$id-$contratante'> 
+                                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-square-fill' viewBox='0 0 16 16'>
+                                    <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z'/>
+                                </svg>
+                            </button>
                         </td>";
                             echo "</tr>";
                         }
 
                         ?>
+
                     </tbody>
                 </table>
+
             </div>
         </section>
     </main>
+
 </body>
+<dialog id="modal" class="modal">
+    <form action="php/dashboard/concluirFesta.php" method="POST">
+        <h2>Você deseja finalizar está festa?</h2>
+        <div id="informacoes-concluir-festa">
+            <p>Id: <span id="id-festa"></span></p>
+            <p>Contratante: <span id="contrante-festa"></span></p>
+        </div>
+        <button id="concluir-festa" name="concluir-festa">Sim</button>
+        <button id="fechar-modal-concluir" type="button">Não</button>
+    </form>
+</dialog>
+<dialog class="modal" id="modal-festas-nao-pagas">
+    <div class="container-festas-nao-pagas">
+        <h3>Festas não pagas e pré pagas</h3>
+        <table class="festas-nao-pagas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Contrante</th>
+                    <th>Data</th>
+                    <th id="aniversariante">Aniversariante</th>
+                    <th>Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $resultNaoPagas = $mysqli->query("SELECT * FROM festas WHERE status = 'A pagar' OR status = 'Pré Pago' OR status IS NULL");
+                while ($row = $resultNaoPagas->fetch_assoc()) {
+                    if ($row['status'] == '' || $row['status'] == 'A pagar') {
+                        echo "<tr class='status-a-pagar'>";
+                    }
+                    if ($row['status'] == 'Pré pago') {
+                        echo "<tr class='status-pre-pago'>";
+                    }
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['contratante'] . "</td>";
+                    echo "<td>" . transformDate($row['data_festa']) . "</td>";
+                    echo "<td>" . $row['aniversariante'] . "</td>";
+                    echo "<td>" . $row['status'] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+        <button id="btn-festas-nao-pagas">Ok</button>
+    </div>
+</dialog>
 
 </html>

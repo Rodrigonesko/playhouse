@@ -20,13 +20,14 @@ table {
     border-top: 1px solid lightgray;
 }
 
-td, th {
+td,
+th {
     padding: 0.5%;
     width: 100%;
     word-break: break-all;
 }
 
-.table-container table #header-tr{
+.table-container table #header-tr {
     border-bottom: 2px solid black;
 }
 
@@ -62,7 +63,8 @@ td, th {
     align-items: center;
 }
 
-.detalhes a {
+.detalhes a,
+.abrir-modal {
     padding: 4px;
     border-radius: 2px;
     margin: 2px;
@@ -72,6 +74,8 @@ td, th {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    border: none;
 }
 
 .info-festa {
@@ -94,4 +98,88 @@ td, th {
     background-color: green;
 }
 
+.abrir-modal {
+    background-color: rgb(24, 121, 0);
+}
 
+.abrir-modal:hover {
+    cursor: pointer;
+}
+
+.btn-concluir-festa {
+    width: 100%;
+}
+
+.modal::backdrop {
+    background-color: rgb(0 0 0 / .5);
+}
+
+.modal {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1em rgb(0 0 0 / .3);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    margin: auto;
+}
+
+#concluir-festa {
+    padding: 10px;
+    background-color: rgb(64, 194, 25);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: 200ms;
+}
+
+#concluir-festa:hover {
+    background-color: rgb(33, 117, 7);
+    cursor: pointer;
+}
+
+#fechar-modal-concluir,  #btn-festas-nao-pagas{
+    padding: 10px;
+    background-color: rgb(194, 13, 13);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: 200ms;
+}
+
+#fechar-modal-concluir:hover, #btn-festas-nao-pagas:hover {
+    background-color: rgb(117, 1, 1);
+    cursor: pointer;
+}
+
+#informacoes-concluir-festa {
+    margin: 10px 0;
+}
+
+#modal-festas-nao-pagas {
+    width: 60%;
+}
+
+.container-festas-nao-pagas {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.festas-nao-pagas {
+    width: 100%;
+    margin: 1rem;
+}
+
+.status-a-pagar {
+    background-color: red;
+    color: white;
+}
+
+.status-pre-pago {
+    background-color: yellow;
+    margin: 3px;
+}

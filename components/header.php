@@ -19,9 +19,16 @@
         <li class='nav-item'>
             <a class='fundo' href='dashboard.php'>Não concluídas</a>
         </li>
+        <li class="nav-item">
+            <a class='fundo' href='posFesta.php'>Pós Festa</a>
+        </li>
+        <li class="nav-item">
+        <a class='fundo' href='inventario.php'>Inventário</a>
+        </li>
         <li class='nav-item'>
             <a class='fundo' href='php/login/exit.php'>Sair</a>
         </li>
+
 
     </ul>
 </nav>
