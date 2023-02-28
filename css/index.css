@@ -10,6 +10,14 @@ a {
     text-decoration: none; 
 }
 
+.section {
+    margin-top: 100px;
+}
+
+.none {
+    display: none;
+}
+
 .success {
     background-color: rgb(139, 255, 116);
     color: rgb(14, 117, 0);
@@ -27,4 +35,17 @@ a {
 .align {
     display: flex;
     align-items: center;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.scroll-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }

@@ -15,6 +15,33 @@ const progressStep3 = document.getElementById('progress-step-3')
 const page1Items = document.getElementsByClassName('page-1-input')
 const page2Items = document.getElementsByClassName('page-2-input')
 
+const decoracao = document.getElementById('decoracao')
+
+const arrInputRadio = [
+    'bebida_alcoolica',
+    'lembrancinhas',
+    'doces_decorados',
+    'papelaria',
+    'retrospectiva',
+    'personagem_externo',
+    'outra-mesa-boas-vindas',
+    'outra-entrada',
+    'outra-bebida-extra',
+    'outra-opcao-salgado',
+    'outra-opcao-doce',
+]
+
+arrInputRadio.forEach(input => {
+    Object.values(document.getElementsByClassName(input)).forEach(element => {
+        element.addEventListener('click', () => {
+            if (element.value === 'Sim') {
+                $(`#${input}`).show('fast')
+            } else {
+                $(`#${input}`).hide('fast')
+            }
+        })
+    })
+})
 
 botaoProximo.addEventListener('click', () => {
 
@@ -49,18 +76,33 @@ botaoAnterior2.addEventListener('click', e => {
     progressStep3.classList.remove('progress-step-active')
 })
 
-/* requisicao ajax  */
+decoracao.addEventListener('click', e => {
 
-let ajax = new XMLHttpRequest()
+    const tdDecoracao = document.getElementsByClassName('decoracao')
+
+    if (decoracao.checked) {
+        for (const td of tdDecoracao) {
+            $(td).show('fast')
+        }
+    } else {
+        for (const td of tdDecoracao) {
+            $(td).hide('fast')
+        }
+    }
+})
+
+/* requisicao ajax  */
 
 let tipoFesta = document.getElementById('tipo_festa')
 let valorTipoFesta
 let url
 tipoFesta.addEventListener('change', e => {
+
     valorTipoFesta = tipoFesta.value
     console.log(valorTipoFesta);
     if (valorTipoFesta === 'week') {
         url = 'components/cardapioWeek.php'
+
     }
     if (valorTipoFesta === 'light') {
         url = 'components/cardapioLight.php'
@@ -73,18 +115,20 @@ tipoFesta.addEventListener('change', e => {
         url = 'components/cardapioHouse.php'
     }
 
-    ajax.open("POST", url, true)
-    ajax.onreadystatechange = () => {
-        console.log(ajax);
-
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var returnData = ajax.responseText;
-            document.getElementById("result").innerHTML = returnData;
-        }
-
-    }
-
-    ajax.send()
-
+    $.post(url, {}, function (data) {
+        document.getElementById("result").innerHTML = data;
+        arrInputRadio.forEach(input => {
+            Object.values(document.getElementsByClassName(input)).forEach(element => {
+                element.addEventListener('click', () => {
+                    if (element.value === 'Sim') {
+                        $(`#${input}`).show('fast')
+                    } else {
+                        $(`#${input}`).hide('fast')
+                    }
+                })
+            })
+        })
+    })
 
 })
+

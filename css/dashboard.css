@@ -1,61 +1,4 @@
-.parties-section-container {
-    padding-left: 5%;
-    padding-right: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.filters {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-table {
-    border-collapse: collapse;
-    text-align: center;
-    width: 100%;
-    table-layout: fixed;
-    border-top: 1px solid lightgray;
-}
-
-td,
-th {
-    padding: 0.5%;
-    width: 100%;
-    word-break: break-all;
-}
-
-.table-container table #header-tr {
-    border-bottom: 2px solid black;
-}
-
-.body-tr {
-    border-bottom: 1px solid black;
-}
-
-.input-id {
-    text-align: center;
-    border: none;
-    outline: none;
-    width: 80%;
-}
-
-.details-button {
-    padding: 3px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: 500;
-    background-color: rgb(67, 163, 230);
-    transition: 200ms;
-}
-
-.details-button:hover {
-    cursor: pointer;
-    background-color: rgb(42, 110, 158);
-}
 
 .detalhes {
     display: flex;
@@ -76,7 +19,7 @@ th {
     align-items: center;
     width: 100%;
     border: none;
-}
+} 
 
 .info-festa {
     background-color: rgb(42, 110, 158);
@@ -110,11 +53,11 @@ th {
     width: 100%;
 }
 
-.modal::backdrop {
+.modal-dialog::backdrop {
     background-color: rgb(0 0 0 / .5);
 }
 
-.modal {
+.modal-dialog {
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 1em rgb(0 0 0 / .3);

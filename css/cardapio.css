@@ -19,19 +19,15 @@ select, input {
 }
 
 .container-salgados {
-    display: flex;
     width: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.container-salgados select {
-    width: 50%;
-    margin: 0.5rem;
 }
 
 .container-salgados input {
-    width: 3rem;
+    width: 4rem;
+}
+
+#outra-opcao-salgado {
+    width: 100%;
 }
 
 .mini-churros, .bolo {
@@ -43,17 +39,17 @@ select, input {
 }
 
 .doces {
-    display: flex;
     width: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.doces select {
-    width: 60%;
-    margin: 0.5rem;
 }
 
 .doces input {
-    width: 3rem;
+    width: 4rem;
+}
+
+.mini-lanchonete label {
+    margin: 4px;
+}
+
+.select {
+    margin: 5px;
 }

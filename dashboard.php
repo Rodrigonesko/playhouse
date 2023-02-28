@@ -17,6 +17,7 @@ $adm = $_SESSION['adm'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -25,63 +26,61 @@ $adm = $_SESSION['adm'];
 </head>
 
 <body>
-    <header>
-        <?php
-        include_once 'components/header.php';
-        ?>
-    </header>
+    <?php
+    include_once 'components/header.php';
+    ?>
     <main>
-        <section class="parties-section-container">
-            <div>
-                <?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-                ?>
-            </div>
-            <div class="filters">
-                <h3>Filtros</h3>
-            </div>
-            <div class="table-container">
+        <section class="section">
+            <div class="container">
+                <div>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </div>
+                <div>
+                    <h3>Filtros</h3>
+                </div>
+                <div class="center-div">
+                    <table class="table scroll-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Contratante</th>
+                                <th>Data</th>
+                                <th>Tipo Festa</th>
+                                <th>Aniversariante</th>
+                                <th>Situação</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                <table>
-                    <thead>
-                        <tr id="header-tr">
-                            <th>ID</th>
-                            <th>Contratante</th>
-                            <th>Data</th>
-                            <th>Tipo Festa</th>
-                            <th>Aniversariante</th>
-                            <th>Situação</th>
-                            <th>Detalhes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                            $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido is Null");
 
-                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido is Null");
+                            while ($row = $result->fetch_assoc()) {
 
-                        while ($row = $result->fetch_assoc()) {
+                                $id = $row['id'];
+                                $contratante = $row['contratante'];
 
-                            $id = $row['id'];
-                            $contratante = $row['contratante'];
+                                if ($row['status'] == '' || $row['status'] == 'A pagar') {
+                                    echo "<tr class='has-background-danger has-text-light'>";
+                                } else if ($row['status'] == 'Pré pago') {
+                                    echo "<tr class='has-background-warning'>";
+                                } else {
+                                    echo "<tr>";
+                                }
 
-                            if ($row['status'] == '' || $row['status'] == 'A pagar') {
-                                echo "<tr class='status-a-pagar body-tr'>";
-                            } else if ($row['status'] == 'Pré pago') {
-                                echo "<tr class='status-pre-pago body-tr'>";
-                            } else {
-                                echo "<tr class='body-tr'>";
-                            }
-
-                            echo "<td>$id</td>";
-                            echo "<td>" . $row['contratante'] . "</td>";
-                            echo "<td>" . transformDate($row['data_festa']) . "</td>";
-                            echo "<td>" . $row['tipo_festa'] . "</td>";
-                            echo "<td>" . $row['aniversariante'] . "</td>";
-                            echo "<td>" . $row['status'] . "</td>";
-                            echo  "<td class='detalhes'>
+                                echo "<td>$id</td>";
+                                echo "<td>" . $row['contratante'] . "</td>";
+                                echo "<td>" . transformDate($row['data_festa']) . "</td>";
+                                echo "<td>" . $row['tipo_festa'] . "</td>";
+                                echo "<td>" . $row['aniversariante'] . "</td>";
+                                echo "<td>" . $row['status'] . "</td>";
+                                echo  "<td class='detalhes'>
                             <a href='info-festa.php?id=$id' class='info-festa' >
                                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
                                     <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
@@ -117,20 +116,21 @@ $adm = $_SESSION['adm'];
                                 </svg>
                             </button>
                         </td>";
-                            echo "</tr>";
-                        }
+                                echo "</tr>";
+                            }
 
-                        ?>
+                            ?>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
+                </div>
             </div>
         </section>
     </main>
 
 </body>
-<dialog id="modal" class="modal">
+<dialog id="modal-finalizar" class="modal-dialog">
     <form action="php/dashboard/concluirFesta.php" method="POST">
         <h2>Você deseja finalizar está festa?</h2>
         <div id="informacoes-concluir-festa">
@@ -141,10 +141,10 @@ $adm = $_SESSION['adm'];
         <button id="fechar-modal-concluir" type="button">Não</button>
     </form>
 </dialog>
-<dialog class="modal" id="modal-festas-nao-pagas">
+<dialog class="modal-dialog" id="modal-festas-nao-pagas">
     <div class="container-festas-nao-pagas">
         <h3>Festas não pagas e pré pagas</h3>
-        <table class="festas-nao-pagas">
+        <table class="festas-nao-pagas table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -159,10 +159,10 @@ $adm = $_SESSION['adm'];
                 $resultNaoPagas = $mysqli->query("SELECT * FROM festas WHERE status = 'A pagar' OR status = 'Pré Pago' OR status IS NULL");
                 while ($row = $resultNaoPagas->fetch_assoc()) {
                     if ($row['status'] == '' || $row['status'] == 'A pagar') {
-                        echo "<tr class='status-a-pagar'>";
+                        echo "<tr class='has-background-danger has-text-light'>";
                     }
                     if ($row['status'] == 'Pré pago') {
-                        echo "<tr class='status-pre-pago'>";
+                        echo "<tr class='has-background-warning'>";
                     }
                     echo "<td>" . $row['id'] . "</td>";
                     echo "<td>" . $row['contratante'] . "</td>";
@@ -174,7 +174,7 @@ $adm = $_SESSION['adm'];
                 ?>
             </tbody>
         </table>
-        <button id="btn-festas-nao-pagas">Ok</button>
+        <button id="btn-festas-nao-pagas" class="button">Ok</button>
     </div>
 </dialog>
 

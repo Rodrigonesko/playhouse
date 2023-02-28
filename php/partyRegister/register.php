@@ -19,6 +19,7 @@ if (isset($_POST['register'])) {
     $contratante = $_POST['contratante'];
     $tipoFesta = $_POST['tipo_festa'];
     $contrato = $_POST['contrato'];
+    $valor = $_POST['valor'];
 
     $dataFesta = $_POST['data_festa'];
     $horarioInicio = $_POST['horario_inicio'];
@@ -88,9 +89,10 @@ if (isset($_POST['register'])) {
                                                 quantas_arvores,
                                                 folhas,
                                                 forminhas_especiais,
-                                                observacoes
-                                                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $insert->bind_param('sssssssssssssssssssssssssssssssssss', $contratante, $tipoFesta, $contrato, $dataFesta, $horarioInicio, $horarioFim, $aniversariante, $idade, $convidadosPagos, $convidadosPagantes, $qunatidadeAdultos, $criancas4, $criancas8, $tema, $corBalao, $tipoBaloes, $painel, $mesas, $tapete, $bebibaAlcoolica, $lembrancinhas, $docesDecorados, $papelaria, $retrospectiva, $tipoMusica, $personagemExterno, $valorAdicional, $decoracaExtra,  $itemDecoracaoExtra, $flores, $arvores, $quantidadeArvores, $folhas, $formihasEspeciais, $observacoes);
+                                                observacoes,
+                                                valor
+                                                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $insert->bind_param('ssssssssssssssssssssssssssssssssssss', $contratante, $tipoFesta, $contrato, $dataFesta, $horarioInicio, $horarioFim, $aniversariante, $idade, $convidadosPagos, $convidadosPagantes, $qunatidadeAdultos, $criancas4, $criancas8, $tema, $corBalao, $tipoBaloes, $painel, $mesas, $tapete, $bebibaAlcoolica, $lembrancinhas, $docesDecorados, $papelaria, $retrospectiva, $tipoMusica, $personagemExterno, $valorAdicional, $decoracaExtra,  $itemDecoracaoExtra, $flores, $arvores, $quantidadeArvores, $folhas, $formihasEspeciais, $observacoes, $valor);
     $insert->execute();
 
     $idFesta = $mysqli->insert_id;
@@ -180,6 +182,16 @@ if (isset($_POST['register'])) {
     $insertEspumone->bind_param("ssssss", $idFesta, $fornecedoresEspumone, $telefoneEspumone, $dataEspumone, $porEspumone, $confirmadoEspumone);
     $insertEspumone->execute();
 
+    $fornecedoresEspumone = $_POST['fornecedores-espumone-2'];
+    $telefoneEspumone = $_POST['telefone-espumone-2'];
+    $dataEspumone = $_POST['data-espumone-2'];
+    $porEspumone = $_POST['por-espumone-2'];
+    $confirmadoEspumone = $_POST['confirmado-espumone-2'];
+
+    $insertEspumone = $mysqli->prepare("INSERT INTO espumone_2 (id_festa, fornecedores, telefone, data, por, confirmado) VALUES (?,?,?,?,?,?)");
+    $insertEspumone->bind_param("ssssss", $idFesta, $fornecedoresEspumone, $telefoneEspumone, $dataEspumone, $porEspumone, $confirmadoEspumone);
+    $insertEspumone->execute();
+
     /* -------------------------------------------------------------------*/
 
     // Cardapio
@@ -188,11 +200,14 @@ if (isset($_POST['register'])) {
     $mesaBoasVindas2 = $_POST['opcao-2-mesa'];
     $mesaBoasVindas3 = $_POST['opcao-3-mesa'];
     $mesaBoasVindas4 = $_POST['opcao-4-mesa'];
+    $outraMesaBoasVindas = $_POST['outra-mesa-boas-vindas'];
 
     $entrada = $_POST['entrada'];
+    $outraEntrada = $_POST['outra-entrada'];
 
     $bebidaExtra = $_POST['bebidas-extras'];
     $bebidaExtra2 = $_POST['bebidas-extras-2'];
+    $outraBebidaExtra = $_POST['outra-bebida-extra'];
 
     $salgados1 = $_POST['salgados-1'];
     $salgados2 = $_POST['salgados-2'];
@@ -212,12 +227,16 @@ if (isset($_POST['register'])) {
     $quantidadeSalgados7 = $_POST['quantidade-salgados-7'];
     $quantidadeSalgados8 = $_POST['quantidade-salgados-8'];
 
+    $outroSalgado = $_POST['outro-salgado'];
+
     $finger1 = $_POST['finger-1'];
     $finger2 = $_POST['finger-2'];
+    $finger3 = $_POST['finger-3'];
 
     $miniChurros = $_POST['mini-churros'];
     $brownie = $_POST['brownie'];
     $bolo = $_POST['bolo'];
+    $bolo2 = $_POST['bolo_2'];
 
     $docesSimples1 = $_POST['simples-1'];
     $docesSimples2 = $_POST['simples-2'];
@@ -229,17 +248,19 @@ if (isset($_POST['register'])) {
     $docesEspeciais3 = $_POST['especiais-3'];
     $docesEspeciais4 = $_POST['especiais-4'];
 
+    $outroDoce = $_POST['outro-doce'];
+
     $refrigerante = $_POST['refrigerante'];
     $agua = $_POST['agua'];
     $sucoLaranja = $_POST['suco-laranja'];
     $sucoUva = $_POST['suco-uva'];
     $chaGelado = $_POST['cha-gelado'];
 
-    $insertCardapio = $mysqli->prepare("INSERT INTO cardapio_festa (id_festa, mesa_boas_vindas_1,  mesa_boas_vindas_2,  mesa_boas_vindas_3,  mesa_boas_vindas_4, entrada, bebida_extra_1, bebida_extra_2, salgado_1, salgado_2, salgado_3, salgado_4, salgado_5, salgado_6, salgado_7, salgado_8, finger_1, finger_2, mini_churros, brownie, bolo, doce_simples_1, doce_simples_2, doce_simples_3, doce_simples_4, doce_especial_1, doce_especial_2, doce_especial_3, doce_especial_4, refrigerante, agua, suco_laranja, suco_uva, cha_gelado, tipo_festa)
-    VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $insertCardapio = $mysqli->prepare("INSERT INTO cardapio_festa (id_festa, mesa_boas_vindas_1,  mesa_boas_vindas_2,  mesa_boas_vindas_3,  mesa_boas_vindas_4, entrada, bebida_extra_1, bebida_extra_2, salgado_1, salgado_2, salgado_3, salgado_4, salgado_5, salgado_6, salgado_7, salgado_8, finger_1, finger_2, mini_churros, brownie, bolo, doce_simples_1, doce_simples_2, doce_simples_3, doce_simples_4, doce_especial_1, doce_especial_2, doce_especial_3, doce_especial_4, refrigerante, agua, suco_laranja, suco_uva, cha_gelado, tipo_festa, finger_3, bolo_2, outro_salgado, outro_doce, outra_bebida_extra, outra_mesa_boas_vindas, outra_entrada)
+    VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
     $insertCardapio->bind_param(
-        "sssssssssssssssssssssssssssssssssss",
+        "ssssssssssssssssssssssssssssssssssssssssss",
         $idFesta,
         $mesaBoasVindas1,
         $mesaBoasVindas2,
@@ -258,7 +279,7 @@ if (isset($_POST['register'])) {
         $salgados8,
         $finger1,
         $finger2,
-        $miniChurros ,
+        $miniChurros,
         $brownie,
         $bolo,
         $docesSimples1,
@@ -274,7 +295,14 @@ if (isset($_POST['register'])) {
         $sucoLaranja,
         $sucoUva,
         $chaGelado,
-        $tipoFesta
+        $tipoFesta,
+        $finger3,
+        $bolo2,
+        $outroSalgado,
+        $outroDoce,
+        $outraBebidaExtra,
+        $outraMesaBoasVindas,
+        $outraEntrada
     );
 
     $insertCardapio->execute();
@@ -282,5 +310,4 @@ if (isset($_POST['register'])) {
     $_SESSION['msg'] = "<p class='success'>Festa cadastrada com sucesso!</p>";
 
     header('Location: ../../partyRegister.php');
-
 }

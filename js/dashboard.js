@@ -1,6 +1,6 @@
 const buttonAbrirModal = document.getElementsByClassName('abrir-modal')
 const buttonFecharModalConcluir = document.getElementById('fechar-modal-concluir')
-const modal = document.getElementById('modal')
+const modal = document.getElementById('modal-finalizar')
 let spanIdFesta = document.getElementById('id-festa')
 let spanContratante = document.getElementById('contrante-festa')
 let buttonConcluirFesta = document.getElementById('concluir-festa')
@@ -28,9 +28,7 @@ Object.values(buttonAbrirModal).forEach(e => {
         spanContratante.textContent = contratante
 
         buttonConcluirFesta.value = id
-
-        console.log(`Id: ${id}, Contrante: ${contratante}`);
-
+        
     })
 })
 

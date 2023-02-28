@@ -18,6 +18,7 @@ $adm = $_SESSION['adm'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/info-cardapio.css">
@@ -39,13 +40,12 @@ $adm = $_SESSION['adm'];
         $contratante = $arrAssoc['contratante'];
         $aniversariante = $arrAssoc['aniversariante'];
 
-
         ?>
     </header>
     <main>
 
-        <section class="section-info-cardapio-container">
-            <div class="info-cardapio-container">
+        <section class="section">
+            <div class="container box">
                 <div class="title">
                     <h3>Cardápio <span id="tipo-festa"><?php echo $tipoFesta ?></span></h3>
                 </div>

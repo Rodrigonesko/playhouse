@@ -120,8 +120,22 @@ if (isset($_POST['salvar'])) {
     $insertEspumone = $mysqli->prepare("UPDATE espumone SET fornecedores=?, telefone=?, data=?, por=?, confirmado=? WHERE id_festa=?");
     $insertEspumone->execute($data);
 
+    //espumone
+
+    $data = [
+        $fornecedoresEspumone2 = $_POST['fornecedores-espumone-2'],
+        $telefoneEspumone2 = $_POST['telefone-espumone-2'],
+        $dataEspumone2 = $_POST['data-espumone-2'],
+        $porEspumone2 = $_POST['por-espumone-2'],
+        $confirmadoEspumone2 = $_POST['confirmado-espumone-2'],
+        $idFesta
+    ];
+
+
+    $insertEspumone2 = $mysqli->prepare("UPDATE espumone_2 SET fornecedores=?, telefone=?, data=?, por=?, confirmado=? WHERE id_festa=?");
+    $insertEspumone2->execute($data);
+
     $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
 
     header("Location: ../../info-fornecedores.php?id=$idFesta");
-    
 }

@@ -10,14 +10,13 @@ if (!isset($_SESSION['id'])) {
 $name = $_SESSION['name'];
 $adm = $_SESSION['adm'];
 
-if(isset($_POST['salvar'])){
+if (isset($_POST['salvar'])) {
 
     $data = [
         $status = $_POST["status"],
         $contratante = $_POST['contratante'],
         $tipoFesta = $_POST['tipo_festa'],
         $contrato = $_POST['contrato'],
-    
         $dataFesta = $_POST['data_festa'],
         $horarioInicio = $_POST['horario_inicio'],
         $horarioFim = $_POST['horario_fim'],
@@ -50,6 +49,8 @@ if(isset($_POST['salvar'])){
         $folhas = $_POST['folhas'],
         $formihasEspeciais = $_POST['forminhas_especiais'],
         $observacoes = $_POST['observacoes'],
+        $valor = $_POST['valor'],
+        $valorPago = $_POST['valor_pago'],
         $idFesta = $_GET['id']
     ];
 
@@ -93,13 +94,13 @@ if(isset($_POST['salvar'])){
                                                 quantas_arvores=?,
                                                 folhas=?,
                                                 forminhas_especiais=?,
-                                                observacoes=? 
+                                                observacoes=?,
+                                                valor=?,
+                                                valor_pago=?
                                                 WHERE id=? ");
     $update->execute($data);
 
     $_SESSION['msg'] = "<p class='success'>Atualizado com sucesso!</p>";
 
     header("Location: ../../info-festa.php?id=$idFesta");
-    
-
 }

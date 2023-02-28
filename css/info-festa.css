@@ -29,26 +29,18 @@ button {
     cursor: pointer;
 }
 
-.info-festa-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    font-size: small;
-    border-radius: 5px;
-    padding: 1rem;
+label {
+    margin: 10px;
 }
 
 .info-festa-container div {
     margin: 0.5rem;
 }
 
-input, select {
-    padding: 5px;
-    border: none;
-    border-bottom: 1px solid black;
+.input {
+    width: auto;
 }
 
-input[type='number'] {
-    width: 3rem;
+.info-observacoes {
+    width: 80%;
 }
-
