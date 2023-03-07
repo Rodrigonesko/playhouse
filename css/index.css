@@ -49,3 +49,10 @@ a {
     overflow-x: auto;
     white-space: nowrap;
 }
+
+.loading {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    z-index: 900;
+}

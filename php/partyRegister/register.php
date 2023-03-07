@@ -54,6 +54,8 @@ if (isset($_POST['register'])) {
     $formihasEspeciais = $_POST['forminhas_especiais'];
     $observacoes = $_POST['observacoes'];
 
+    $idData = transformDateToId($dataFesta);
+
     $insert = $mysqli->prepare("INSERT INTO festas (
                                                 contratante,
                                                 tipo_festa,
@@ -90,9 +92,10 @@ if (isset($_POST['register'])) {
                                                 folhas,
                                                 forminhas_especiais,
                                                 observacoes,
-                                                valor
-                                                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $insert->bind_param('ssssssssssssssssssssssssssssssssssss', $contratante, $tipoFesta, $contrato, $dataFesta, $horarioInicio, $horarioFim, $aniversariante, $idade, $convidadosPagos, $convidadosPagantes, $qunatidadeAdultos, $criancas4, $criancas8, $tema, $corBalao, $tipoBaloes, $painel, $mesas, $tapete, $bebibaAlcoolica, $lembrancinhas, $docesDecorados, $papelaria, $retrospectiva, $tipoMusica, $personagemExterno, $valorAdicional, $decoracaExtra,  $itemDecoracaoExtra, $flores, $arvores, $quantidadeArvores, $folhas, $formihasEspeciais, $observacoes, $valor);
+                                                valor,
+                                                id_data
+                                                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $insert->bind_param('sssssssssssssssssssssssssssssssssssss', $contratante, $tipoFesta, $contrato, $dataFesta, $horarioInicio, $horarioFim, $aniversariante, $idade, $convidadosPagos, $convidadosPagantes, $qunatidadeAdultos, $criancas4, $criancas8, $tema, $corBalao, $tipoBaloes, $painel, $mesas, $tapete, $bebibaAlcoolica, $lembrancinhas, $docesDecorados, $papelaria, $retrospectiva, $tipoMusica, $personagemExterno, $valorAdicional, $decoracaExtra,  $itemDecoracaoExtra, $flores, $arvores, $quantidadeArvores, $folhas, $formihasEspeciais, $observacoes, $valor, $idData);
     $insert->execute();
 
     $idFesta = $mysqli->insert_id;

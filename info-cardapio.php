@@ -22,6 +22,8 @@ $adm = $_SESSION['adm'];
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/info-cardapio.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+    <script src="js/infoCardapio.js" defer></script>
     <title>Cardápio</title>
 </head>
 

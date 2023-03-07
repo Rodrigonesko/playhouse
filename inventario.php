@@ -18,6 +18,7 @@ $adm = $_SESSION['adm'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/inventario.css">
@@ -31,8 +32,8 @@ $adm = $_SESSION['adm'];
         ?>
     </header>
     <main>
-        <section class="section-inventario-container">
-            <div class="inventario-container">
+        <section class="section">
+            <div class="container">
                 <div class="title">
                     <h3>Inventário</h3>
                 </div>
@@ -48,7 +49,7 @@ $adm = $_SESSION['adm'];
                     ?>
                 </div>
                 <div class="inventario">
-                    <table class="table-inventario">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -65,11 +66,11 @@ $adm = $_SESSION['adm'];
                                 $id = $row['id'];
                                 echo "<tr>";
                                 echo "<form action='php/inventario/alterar.php?id=$id' method='POST' >";
-                                echo "<td>". $row['id'] ."</td>";
-                                echo "<td>". $row['item'] ."</td>";
-                                echo "<td>". $row['quantidade'] ."</td>";
-                                echo "<td>". $row['categoria'] ."</td>";
-                                echo "<td><input type='number' name='alterar-valor'></td>";
+                                echo "<td>" . $row['id'] . "</td>";
+                                echo "<td>" . $row['item'] . "</td>";
+                                echo "<td>" . $row['quantidade'] . "</td>";
+                                echo "<td>" . $row['categoria'] . "</td>";
+                                echo "<td><input type='number' name='alterar-valor' class='input'></td>";
                                 echo "<td><button name='salvar' class='salvar-valor btn'>Salvar</button></td>";
                                 echo "<td><button name='excluir' class='excluir-item btn'>Excluir</button></td>";
                                 echo "</form>";
@@ -86,18 +87,19 @@ $adm = $_SESSION['adm'];
                     <form action="php/inventario/adicionar.php" method="POST" class="form-adiciona-item">
                         <div class="input-box">
                             <label for="item">Item: </label>
-                            <input type="text" name="item" id="item" placeholder="Item">
+                            <input type="text" name="item" id="item" placeholder="Item" class="input">
                         </div>
                         <div class="input-box">
                             <label for="quantidade">Quantidade: </label>
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="0">
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="0" class="input">
                         </div>
                         <div class="input-box">
-                            <label for="categoria">Categoria: </label>
-                            <select name="categoria" id="categoria">
-                                <option value="">Categoria</option>
-                                <option value="descartaveis">Descartaveis</option>
-                            </select>
+                            <div class="select">
+                                <select name="categoria" id="categoria">
+                                    <option value="">Categoria</option>
+                                    <option value="descartaveis">Descartaveis</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="input-box">
                             <button class="button-adicionar" name="adicionar-item">Adicionar</button>

@@ -19,9 +19,12 @@ error_reporting(0);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/info-escala.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+    <script src="js/infoEscala.js" defer></script>
     <title>Escala</title>
 </head>
 
@@ -92,11 +95,21 @@ error_reporting(0);
         $valorBaloes = $arrAux['valor'];
         $posicaoBaloes = $arrAux['posicao'];
 
+        $select = $mysqli->query("SELECT * FROM escala WHERE id_festa = '$id' AND cargo='Camarim'");
+
+        $arrAux = $select->fetch_assoc();
+
+        $nomeCamarim = $arrAux['nome'];
+        $telefoneCamarim = $arrAux['telefone'];
+        $horarioCamarim = $arrAux['horario'];
+        $valorCamarim = $arrAux['valor'];
+        $posicaoCamarim = $arrAux['posicao'];
+
         ?>
     </header>
     <main>
-        <section class="section-escala-container">
-            <div class="escala-container">
+        <section class="section-escala-container section">
+            <div class="escala-container container">
                 <div class="title">
                     <h3>Escala</h3>
                 </div>
@@ -108,8 +121,13 @@ error_reporting(0);
                     }
                     ?>
                 </div>
+                <div class="box">
+                    <div class="subtitle">
+                        <h4>Valor total: <span id="valor-total"></span></h4>
+                    </div>
+                </div>
                 <form action="php/escala/escala.php?id=<?php echo $id ?>" method="post">
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Gerente</h4>
                         </div>
@@ -131,12 +149,12 @@ error_reporting(0);
                                 <label for="posicao-gerente">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-gerente" id="valor-gerente" class="input" value="<?php echo $valorGerente; ?>">
+                                <input type="text" name="valor-gerente" id="valor-gerente" class="input valor" value="<?php echo $valorGerente; ?>">
                                 <label for="valor-gerente">Valor</label>
                             </div>
                         </div>
                     </div>
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Cozinha</h4>
                         </div>
@@ -158,7 +176,7 @@ error_reporting(0);
                                 <label for="posicao-chefe">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-chefe" id="valor-chefe" class="input" value="<?php echo $valorChefe ?>">
+                                <input type="text" name="valor-chefe" id="valor-chefe" class="input valor" value="<?php echo $valorChefe ?>">
                                 <label for="valor-chefe">Valor</label>
                             </div>
                         </div>
@@ -176,7 +194,7 @@ error_reporting(0);
                             ];
                         }
 
-                        for ($i = 1; $i <= 3; $i++) {
+                        for ($i = 1; $i <= 5; $i++) {
 
                             $nome = $arrAuxiliares[$i - 1][0];
                             $telefone = $arrAuxiliares[$i - 1][1];
@@ -202,7 +220,7 @@ error_reporting(0);
                             <label for='posicao-auxiliar-$i'>Posição</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='valor-auxiliar[]' id='valor-auxiliar-$i' class='input' value='$valor'>
+                            <input type='text' name='valor-auxiliar[]' id='valor-auxiliar-$i' class='input valor' value='$valor'>
                             <label for='valor-auxiliar-$i'>Valor</label>
                         </div>
                     </div>
@@ -210,7 +228,7 @@ error_reporting(0);
                         }
                         ?>
                     </div>
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Garçom/Copa</h4>
                         </div>
@@ -232,7 +250,7 @@ error_reporting(0);
                                 <label for="posicao-copa">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-copa" id="valor-copa" class="input" value="<?php echo $valorCopa ?>">
+                                <input type="text" name="valor-copa" id="valor-copa" class="input valor" value="<?php echo $valorCopa ?>">
                                 <label for="valor-copa">Valor</label>
                             </div>
                         </div>
@@ -250,7 +268,7 @@ error_reporting(0);
                             ];
                         }
 
-                        for ($i = 1; $i <= 5; $i++) {
+                        for ($i = 1; $i <= 10; $i++) {
 
                             $nome = $arrGarcons[$i - 1][0];
                             $telefone = $arrGarcons[$i - 1][1];
@@ -276,7 +294,7 @@ error_reporting(0);
                             <label for='posicao-garcom-$i'>Posição</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='valor-garcom[]' id='valor-garcom-$i' class='input' value='$valor'>
+                            <input type='text' name='valor-garcom[]' id='valor-garcom-$i' class='input valor' value='$valor'>
                             <label for='valor-garcom-$i'>Valor</label>
                         </div>
                     </div>
@@ -284,7 +302,7 @@ error_reporting(0);
                         }
                         ?>
                     </div>
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Portaria</h4>
                         </div>
@@ -306,12 +324,12 @@ error_reporting(0);
                                 <label for="posicao-portaria">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-portaria" id="valor-portaria" class="input" value="<?php echo $valorPortaria ?>">
+                                <input type="text" name="valor-portaria" id="valor-portaria" class="input valor" value="<?php echo $valorPortaria ?>">
                                 <label for="valor-portaria">Valor</label>
                             </div>
                         </div>
                     </div>
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Recepção</h4>
                         </div>
@@ -333,12 +351,12 @@ error_reporting(0);
                                 <label for="posicao-recepcao">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-recepcao" id="valor-recepcao" class="input" value="<?php echo $valorRecepcao ?>">
+                                <input type="text" name="valor-recepcao" id="valor-recepcao" class="input valor" value="<?php echo $valorRecepcao ?>">
                                 <label for="valor-recepcao">Valor</label>
                             </div>
                         </div>
                     </div>
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Monitores</h4>
                         </div>
@@ -356,7 +374,7 @@ error_reporting(0);
                             ];
                         }
 
-                        for ($i = 1; $i <= 6; $i++) {
+                        for ($i = 1; $i <= 8; $i++) {
 
                             $nome = $arrMonitores[$i - 1][0];
                             $telefone = $arrMonitores[$i - 1][1];
@@ -382,7 +400,7 @@ error_reporting(0);
                             <label for='posicao-monitor-$i'>Posição</label>
                         </div>
                         <div class='input-single'>
-                            <input type='text' name='valor-monitor[]' id='valor-monitor-$i' class='input' value='$valor'>
+                            <input type='text' name='valor-monitor[]' id='valor-monitor-$i' class='input valor' value='$valor'>
                             <label for='valor-monitor-$i'>Valor</label>
                         </div>
                     </div>
@@ -390,7 +408,7 @@ error_reporting(0);
                         }
                         ?>
                     </div>
-                    <div class="escala">
+                    <div class="box">
                         <div class="subtitle">
                             <h4>Balões</h4>
                         </div>
@@ -412,8 +430,35 @@ error_reporting(0);
                                 <label for="posicao-baloes">Posição</label>
                             </div>
                             <div class="input-single">
-                                <input type="text" name="valor-baloes" id="valor-baloes" class="input" value="<?php echo $valorBaloes ?>">
+                                <input type="text" name="valor-baloes" id="valor-baloes" class="input valor" value="<?php echo $valorBaloes ?>">
                                 <label for="valor-baloes">Valor</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="subtitle">
+                            <h4>Camarim</h4>
+                        </div>
+                        <div class="row">
+                            <div class="input-single">
+                                <input type="text" name="nome-camarim" id="nome-camarim" class="input" value="<?php echo $nomeCamarim ?>">
+                                <label for="nome-camarim">Camarim</label>
+                            </div>
+                            <div class="input-single">
+                                <input type="text" name="telefone-camarim" id="telefone-camarim" class="input" value="<?php echo $telefoneCamarim ?>">
+                                <label for="telefone-camarim">Telefone</label>
+                            </div>
+                            <div class="input-single">
+                                <input type="text" name="horario-camarim" id="horario-camarim" class="input" value="<?php echo $horarioCamarim ?>">
+                                <label for="horario-camarim">Horário</label>
+                            </div>
+                            <div class="input-single">
+                                <input type="text" name="posicao-camarim" id="posicao-camarim" class="input" value="Camarim">
+                                <label for="posicao-camarim">Posição</label>
+                            </div>
+                            <div class="input-single">
+                                <input type="text" name="valor-camarim" id="valor-camarim" class="input valor" value="<?php echo $valorCamarim ?>">
+                                <label for="valor-camarim">Valor</label>
                             </div>
                         </div>
                     </div>

@@ -43,7 +43,7 @@
 
 .input-single .input:focus~label,
 .input:valid~label {
-    transform: translateY(-24px);
+    transform: translateY(-35px);
     font-size: 12px;
     color: cornflowerblue;
 }

@@ -11,13 +11,14 @@ Object.values(editarConvidado).forEach(e => {
         let idadeConvidado = tr.children[1].textContent
 
         let input = document.createElement("input")
-        input.style.width = '30%'
+        input.classList.add('input')
         input.value = nomeConvidado
 
         tr.children[0].removeChild(tr.children[0].firstChild)
         tr.children[0].appendChild(input)
 
         let inputIdade = document.createElement('input')
+        inputIdade.classList.add('input')
         inputIdade.style.width = '30%'
         input.style.textAlign = 'center'
         inputIdade.value = idadeConvidado

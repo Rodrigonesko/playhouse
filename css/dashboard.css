@@ -126,3 +126,7 @@
     background-color: yellow;
     margin: 3px;
 }
+
+.input-modal {
+    max-width: 100px;
+}

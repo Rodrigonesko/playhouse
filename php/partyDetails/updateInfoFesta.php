@@ -51,11 +51,9 @@ if (isset($_POST['salvar'])) {
         $observacoes = $_POST['observacoes'],
         $valor = $_POST['valor'],
         $valorPago = $_POST['valor_pago'],
-        $idFesta = $_GET['id']
+        $idData = transformDateToId($dataFesta),
+        $idFesta = $_GET['id'],
     ];
-
-
-
 
 
     $update = $mysqli->prepare("UPDATE festas SET 
@@ -96,7 +94,8 @@ if (isset($_POST['salvar'])) {
                                                 forminhas_especiais=?,
                                                 observacoes=?,
                                                 valor=?,
-                                                valor_pago=?
+                                                valor_pago=?,
+                                                id_data=?
                                                 WHERE id=? ");
     $update->execute($data);
 

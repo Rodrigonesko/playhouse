@@ -18,6 +18,7 @@ $adm = $_SESSION['adm'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/controle-entrada.css">
@@ -36,7 +37,7 @@ $adm = $_SESSION['adm'];
         ?>
     </header>
     <main>
-        <section class="section-controle-container">
+        <section class="section-controle-container section">
             <div>
                 <?php
                     if(isset($_SESSION['msg'])){
@@ -45,27 +46,27 @@ $adm = $_SESSION['adm'];
                     }
                 ?>
             </div>
-            <div class="controle-container">
+            <div class="box">
                 <div class="title">
-                    <h3>Cadastro de Condidados</h3>
+                    <h3>Cadastro de Convidados</h3>
                     <h3>ID: <?php echo $id ?></h3>
                 </div>
                 <form method="POST" action="php/controleEntrada/adicionarConvidado.php?id=<?php echo $id; ?>" class="inputs">
                     <div class="input-box">
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" placeholder="Nome" required>
+                        <input type="text" name="nome" id="nome" class="input" placeholder="Nome" required>
                     </div>
                     <div class="input-box">
                         <label for="idade">Idade</label>
-                        <input type="number" name="idade" id="idade" placeholder="Idade" required>
+                        <input type="number" name="idade" id="idade" class="input" placeholder="Idade" required>
                     </div>
                     <div class="input-box">
                         <label for="telefone">Telefone</label>
-                        <input type="text" name="telefone" id="telefone" placeholder="Telefone">
+                        <input type="text" name="telefone" id="telefone" class="input" placeholder="Telefone">
                     </div>
                     <div class="input-box">
                         <label for="cpf">CPF</label>
-                        <input type="text" name="cpf" id="cpf" placeholder="CPF">
+                        <input type="text" name="cpf" id="cpf" class="input" placeholder="CPF">
                     </div>
 
                     <div class="button-container">
@@ -73,11 +74,11 @@ $adm = $_SESSION['adm'];
                     </div>
                 </form>
             </div>
-            <div class="convidados-cadastrados">
+            <div class="box">
                 <div id="convidado-atualizado">
 
                 </div>
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Nome</th>

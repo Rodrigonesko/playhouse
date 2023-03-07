@@ -21,7 +21,14 @@ if (isset($_POST['salvar'])) {
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Auxiliar')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Auxiliar')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Auxiliar')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Auxiliar')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Auxiliar')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Copa')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Garçom')");
@@ -35,7 +42,10 @@ if (isset($_POST['salvar'])) {
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Monitor')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Monitor')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Monitor')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Monitor')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Monitor')");
         $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Balões')");
+        $mysqli->query("INSERT INTO escala (id_festa, cargo) VALUES ('$id', 'Camarim')");
     }
 
     /*---------------- Update Gerente ---------------*/
@@ -214,6 +224,22 @@ if (isset($_POST['salvar'])) {
         $posicaoBaloes = $_POST['posicao-baloes'],
         $id,
         'Balões'
+    ];
+
+    $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id_festa=? AND cargo=?");
+
+    $update->execute($dados);
+
+    /*---------------- Update Camarim ---------------*/
+
+    $dados = [
+        $nomeCamarim = $_POST['nome-camarim'],
+        $telefoneCamarim = $_POST['telefone-camarim'],
+        $horarioCamarim = $_POST['horario-camarim'],
+        $valorCamarim = $_POST['valor-camarim'],
+        $posicaoCamarim = $_POST['posicao-camarim'],
+        $id,
+        'Camarim'
     ];
 
     $update = $mysqli->prepare("UPDATE escala SET nome=?, telefone=?, horario=?, valor=?, posicao=? WHERE id_festa=? AND cargo=?");

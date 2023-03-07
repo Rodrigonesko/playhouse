@@ -7,6 +7,8 @@ let buttonConcluirFesta = document.getElementById('concluir-festa')
 const buttonNaoPagas = document.getElementById('btn-festas-nao-pagas')
 const modalNaoPagas = document.getElementById('modal-festas-nao-pagas')
 
+const buttonAdicionarPagamento = document.getElementsByClassName('button-adicionar-pagamento')
+
 window.onload = () => {
     modalNaoPagas.showModal()
 }
@@ -28,7 +30,7 @@ Object.values(buttonAbrirModal).forEach(e => {
         spanContratante.textContent = contratante
 
         buttonConcluirFesta.value = id
-        
+
     })
 })
 
@@ -36,7 +38,20 @@ buttonFecharModalConcluir.onclick = () => {
     modal.close()
 }
 
-
-
-
+Object.values(buttonAdicionarPagamento).forEach(e => {
+    e.addEventListener('click', () => {
+        const valorAdicionado = e.previousElementSibling.value
+        const id = e.value
+        const loading = e.nextElementSibling
+        loading.classList.remove('none')
+        $.post(`php/dashboard/adicionarPagamento.php?id=${id}`, {
+            valorAdicionado
+        }, function (data) {
+            console.log(data);
+            if (data === 'alterado') {
+                window.location.reload()
+            }
+        })
+    })
+})
 

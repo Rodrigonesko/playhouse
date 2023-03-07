@@ -17,6 +17,7 @@ $adm = $_SESSION['adm'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/pos-festa.css">
@@ -31,7 +32,7 @@ $adm = $_SESSION['adm'];
         ?>
     </header>
     <main>
-        <section class="parties-section-container">
+        <section class="parties-section-container section">
             <div>
                 <?php
                 if (isset($_SESSION['msg'])) {
@@ -40,53 +41,54 @@ $adm = $_SESSION['adm'];
                 }
                 ?>
             </div>
-            <div class="filters">
-                <h3>Filtros</h3>
-            </div>
-            <div class="table-container">
+            <div class="container">
+                <div class="filters">
+                    <h3>Filtros</h3>
+                </div>
+                <div class="is-flex is-justify-content-center">
+                    <table class="table scroll-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Contratante</th>
+                                <th>Data</th>
+                                <th>Tipo Festa</th>
+                                <th>Aniversariante</th>
+                                <th>Situação</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                <table>
-                    <thead>
-                        <tr id="header-tr">
-                            <th>ID</th>
-                            <th>Contratante</th>
-                            <th>Data</th>
-                            <th>Tipo Festa</th>
-                            <th>Aniversariante</th>
-                            <th>Situação</th>
-                            <th>Detalhes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                            $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido = 1");
 
-                        $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido = 1");
+                            while ($row = $result->fetch_assoc()) {
 
-                        while ($row = $result->fetch_assoc()) {
+                                $id = $row['id'];
+                                $contratante = $row['contratante'];
 
-                            $id = $row['id'];
-                            $contratante = $row['contratante'];
-
-                            echo "<tr class='body-tr'>";
-                            echo "<td>$id</td>";
-                            echo "<td>" . $row['contratante'] . "</td>";
-                            echo "<td>" . transformDate($row['data_festa']) . "</td>";
-                            echo "<td>" . $row['tipo_festa'] . "</td>";
-                            echo "<td>" . $row['aniversariante'] . "</td>";
-                            echo "<td>" . $row['status'] . "</td>";
-                            echo  "<td class='detalhes'>
+                                echo "<tr class='body-tr'>";
+                                echo "<td>$id</td>";
+                                echo "<td>" . $row['contratante'] . "</td>";
+                                echo "<td>" . transformDate($row['data_festa']) . "</td>";
+                                echo "<td>" . $row['tipo_festa'] . "</td>";
+                                echo "<td>" . $row['aniversariante'] . "</td>";
+                                echo "<td>" . $row['status'] . "</td>";
+                                echo  "<td class='detalhes'>
                                     <a href='pos-festa-detalhes.php?id=$id'>Pós Festa</a>
                         </td>";
-                            echo "</tr>";
-                        }
+                                echo "</tr>";
+                            }
 
-                        ?>
+                            ?>
 
-                    </tbody>
-                </table>
-
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
 </body>
+
 </html>

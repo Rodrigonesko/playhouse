@@ -139,15 +139,19 @@ $tipoFesta = $row['tipo_festa'];
                     Outra Mesa de Boas Vindas?
                     <div class="control">
                         <label class="radio">
-                            <input type="radio" name="outro_mesa_boas_vindas" class="outra-mesa-boas-vindas" value="Sim" <?php if($checkboxOutraMesa){echo 'checked';} ?>>
+                            <input type="radio" name="outro_mesa_boas_vindas" class="outra-mesa-boas-vindas" value="Sim" <?php if ($checkboxOutraMesa) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                             Sim
                         </label>
                         <label class="radio">
-                            <input type="radio" name="outro_mesa_boas_vindas" class="outra-mesa-boas-vindas" value="Não" <?php if(!$checkboxOutraMesa){echo 'checked';} ?>>
+                            <input type="radio" name="outro_mesa_boas_vindas" class="outra-mesa-boas-vindas" value="Não" <?php if (!$checkboxOutraMesa) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                             Não
                         </label>
                     </div>
-                    <input type="text" name="outra-mesa-boas-vindas" id="outra-mesa-boas-vindas" placeholder="Outra Mesa de Boas Vindas" class="input" value="<?php echo $outraMesaBoasVindas ?>">
+                    <input type="text" name="outra-mesa-boas-vindas" id="outra-mesa-boas-vindas" placeholder="Outra Mesa de Boas Vindas" class="input <?php if(!$checkboxOutraMesa){echo 'none';} ?>" value="<?php echo $outraMesaBoasVindas ?>">
                 </div>
             </div>
         </div>
@@ -175,15 +179,19 @@ $tipoFesta = $row['tipo_festa'];
                 Outra Bebida Extra?
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="outra_bebida_extra" class="outra-bebida-extra" value="Sim" <?php if($checkboxOutraBebiba){echo 'checked';} ?>>
+                        <input type="radio" name="outra_bebida_extra" class="outra-bebida-extra" value="Sim" <?php if ($checkboxOutraBebiba) {
+                                                                                                                    echo 'checked';
+                                                                                                                } ?>>
                         Sim
                     </label>
                     <label class="radio">
-                        <input type="radio" name="outra_bebida_extra" class="outra-bebida-extra" value="Não" <?php if(!$checkboxOutraBebiba){echo 'checked';} ?>>
+                        <input type="radio" name="outra_bebida_extra" class="outra-bebida-extra" value="Não" <?php if (!$checkboxOutraBebiba) {
+                                                                                                                    echo 'checked';
+                                                                                                                } ?>>
                         Não
                     </label>
                 </div>
-                <input type="text" name="outra-bebida-extra" id="outra-bebida-extra" placeholder="Outra Bebidas Extras" class="input" value="<?php echo $outraBebidaExtra ?>">
+                <input type="text" name="outra-bebida-extra" id="outra-bebida-extra" placeholder="Outra Bebidas Extras" class="input <?php if(!$checkboxOutraBebiba){echo 'none';} ?>" value="<?php echo $outraBebidaExtra ?>">
             </div>
         </div>
 
@@ -192,7 +200,7 @@ $tipoFesta = $row['tipo_festa'];
             <div class="container-salgados">
                 <div>
                     <h4>Fritos</h4>
-                    <div class="is-justify-content-center is-flex is-align-items-center	">
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="salgados-1" id="salgados-1">
                                 <?php
@@ -210,7 +218,7 @@ $tipoFesta = $row['tipo_festa'];
                         </div>
                         <input type="number" name="quantidade-salgados-1" id="quantidade-salgados-1" class="input" value="<?php echo $quantidadeSalgados1 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="salgados-2" id="salgados-2">
                                 <?php
@@ -228,7 +236,7 @@ $tipoFesta = $row['tipo_festa'];
                         </div>
                         <input type="number" name="quantidade-salgados-2" id="quantidade-salgados-2" class="input" value="<?php echo $quantidadeSalgados2 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="salgados-3" id="salgados-3">
                                 <?php
@@ -249,7 +257,7 @@ $tipoFesta = $row['tipo_festa'];
                 </div>
                 <div>
                     <h4>Assados</h4>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="salgados-4" id="salgados-4">
                                 <?php
@@ -267,7 +275,7 @@ $tipoFesta = $row['tipo_festa'];
                         </div>
                         <input type="number" name="quantidade-salgados-4" id="quantidade-salgados-4" class="input" value="<?php echo $quantidadeSalgados4 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="salgados-5" id="salgados-5">
                                 <?php
@@ -285,7 +293,7 @@ $tipoFesta = $row['tipo_festa'];
                         </div>
                         <input type="number" name="quantidade-salgados-5" id="quantidade-salgados-5" class="input" value="<?php echo $quantidadeSalgados5 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="salgados-6" id="salgados-6">
                                 <?php
@@ -309,15 +317,19 @@ $tipoFesta = $row['tipo_festa'];
                 Outra Opção de Salgado?
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="outro_salgado" class="outra-opcao-salgado" value="Sim" <?php if($checkBoxOutroSalgado){echo 'checked';} ?>>
+                        <input type="radio" name="outro_salgado" class="outra-opcao-salgado" value="Sim" <?php if ($checkBoxOutroSalgado) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                         Sim
                     </label>
                     <label class="radio">
-                        <input type="radio" name="outro_salgado" class="outra-opcao-salgado" value="Não" <?php if(!$checkBoxOutroSalgado){echo 'checked';} ?>>
+                        <input type="radio" name="outro_salgado" class="outra-opcao-salgado" value="Não" <?php if (!$checkBoxOutroSalgado) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                         Não
                     </label>
                 </div>
-                <input type="text" name="outro-salgado" id="outra-opcao-salgado" placeholder="Outra Opção Salgado" class="input" value="<?php echo $outroSalgado ?>">
+                <input type="text" name="outro-salgado" id="outra-opcao-salgado" placeholder="Outra Opção Salgado" class="input <?php if(!$checkBoxOutroSalgado){echo 'none';} ?>" value="<?php echo $outroSalgado ?>">
             </div>
         </div>
 
@@ -426,7 +438,7 @@ $tipoFesta = $row['tipo_festa'];
             <div class="doces">
                 <div>
                     <h5>Simples</h5>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="simples-1" id="simples-1">
                                 <?php
@@ -445,7 +457,7 @@ $tipoFesta = $row['tipo_festa'];
 
                         <input type="number" name="quantidade-simples-1" id="quantidade-simples-1" class="input" value="<?php echo $quantidadeSimples1 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="simples-2" id="simples-2">
                                 <?php
@@ -463,7 +475,7 @@ $tipoFesta = $row['tipo_festa'];
                         </div>
                         <input type="number" name="quantidade-simples-2" id="quantidade-simples-2" class="input" value="<?php echo $quantidadeSimples2 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="simples-3" id="simples-3">
                                 <?php
@@ -484,7 +496,7 @@ $tipoFesta = $row['tipo_festa'];
                 </div>
                 <div>
                     <h5>Especiais</h5>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="especiais-1" id="especiais-1">
                                 <?php
@@ -502,7 +514,7 @@ $tipoFesta = $row['tipo_festa'];
                         </div>
                         <input type="number" name="quantidade-especiais-1" id="quantidade-especiais-1" class="input" value="<?php echo $quantidadeEspecial1 ?>">
                     </div>
-                    <div>
+                    <div class="is-justify-content-center is-flex is-align-items-center">
                         <div class="select">
                             <select name="especiais-2" id="especiais-2">
                                 <?php
@@ -526,15 +538,19 @@ $tipoFesta = $row['tipo_festa'];
                 Outra Opção de Doce?
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="outro_doce" class="outra-opcao-doce" value="Sim" <?php if($checkboxOutroDoce){echo 'checked';} ?>>
+                        <input type="radio" name="outro_doce" class="outra-opcao-doce" value="Sim" <?php if ($checkboxOutroDoce) {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>
                         Sim
                     </label>
                     <label class="radio">
-                        <input type="radio" name="outro_doce" class="outra-opcao-doce" value="Não" <?php if(!$checkboxOutroDoce){echo 'checked';} ?>>
+                        <input type="radio" name="outro_doce" class="outra-opcao-doce" value="Não" <?php if (!$checkboxOutroDoce) {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>
                         Não
                     </label>
                 </div>
-                <input type="text" name="outro-doce" id="outra-opcao-doce" placeholder="Outra Opção Doce" class="input" value="<?php echo $outroDoce ?>">
+                <input type="text" name="outro-doce" id="outra-opcao-doce" placeholder="Outra Opção Doce" class="input <?php if(!$checkboxOutroDoce){echo 'none';} ?>" value="<?php echo $outroDoce ?>">
             </div>
         </div>
 

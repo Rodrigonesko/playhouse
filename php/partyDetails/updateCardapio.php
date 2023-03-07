@@ -180,6 +180,7 @@ if (isset($_POST['salvar'])) {
 
             $miniChurros = $_POST['mini-churros'],
             $bolo = $_POST['bolo'],
+            $bolo2 = $_POST['bolo_2'],
 
             $docesSimples1 = $_POST['simples-1'],
             $docesSimples2 = $_POST['simples-2'],
@@ -202,6 +203,13 @@ if (isset($_POST['salvar'])) {
             $sucoUva,
             $chaGelado,
             $tipoFesta,
+
+            $outraMesaBoasVindas = $_POST['outra-mesa-boas-vindas'],
+            $outraEntrada = $_POST['outra-entrada'],
+            $outraBebidaExtra = $_POST['outra-bebida-extra'],
+            $outroSalgado = $_POST['outro-salgado'],
+            $finger3 = $_POST['finger-3'],
+            $outroDoce = $_POST['outro-doce'],
 
             $id
 
@@ -230,6 +238,7 @@ if (isset($_POST['salvar'])) {
         finger_2 = ?,
         mini_churros = ?,
         bolo = ?,
+        bolo_2 = ?,
         doce_simples_1 = ?,
         doce_simples_2 = ?,
         doce_simples_3 = ?,
@@ -247,14 +256,16 @@ if (isset($_POST['salvar'])) {
         suco_laranja = ?,
         suco_uva = ?,
         cha_gelado = ?,
-        tipo_festa = ?
+        tipo_festa = ?,
+        outra_mesa_boas_vindas = ?,
+        outra_entrada=?,
+        outra_bebida_extra = ?,
+        outro_salgado = ?,
+        finger_3 = ?,
+        outro_doce = ?
 
          WHERE id_festa = ?");
     }
-
-    // if ($tipoFesta == 'play') {
-
-    // }
 
     if ($tipoFesta == 'house') {
         $data = [
@@ -292,6 +303,7 @@ if (isset($_POST['salvar'])) {
             $miniChurros = $_POST['mini-churros'],
             $brownie = $_POST['brownie'],
             $bolo = $_POST['bolo'],
+            $bolo2 = $_POST['bolo_2'],
 
             $docesSimples1 = $_POST['simples-1'],
             $docesSimples2 = $_POST['simples-2'],
@@ -318,6 +330,13 @@ if (isset($_POST['salvar'])) {
             $sucoUva,
             $chaGelado,
             $tipoFesta,
+
+            $outraMesaBoasVindas = $_POST['outra-mesa-boas-vindas'],
+            $outraEntrada = $_POST['outra-entrada'],
+            $outraBebidaExtra = $_POST['outra-bebida-extra'],
+            $outroSalgado = $_POST['outro-salgado'],
+            $finger3 = $_POST['finger-3'],
+            $outroDoce = $_POST['outro-doce'],
 
             $id
 
@@ -353,6 +372,7 @@ if (isset($_POST['salvar'])) {
         mini_churros = ?,
         brownie = ?,
         bolo = ?,
+        bolo_2 =?,
         doce_simples_1 = ?,
         doce_simples_2 = ?,
         doce_simples_3 = ?,
@@ -374,7 +394,13 @@ if (isset($_POST['salvar'])) {
         suco_laranja = ?,
         suco_uva = ?,
         cha_gelado = ?,
-        tipo_festa = ?
+        tipo_festa = ?,
+        outra_mesa_boas_vindas = ?,
+        outra_entrada=?,
+        outra_bebida_extra = ?,
+        outro_salgado = ?,
+        finger_3 = ?,
+        outro_doce = ?
 
          WHERE id_festa = ?");
     }

@@ -21,6 +21,7 @@ $adm = $_SESSION['adm'];
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
     <script src="js/dashboard.js" defer></script>
     <title>Dashboard</title>
 </head>
@@ -31,6 +32,7 @@ $adm = $_SESSION['adm'];
     ?>
     <main>
         <section class="section">
+
             <div class="container">
                 <div>
                     <?php
@@ -59,7 +61,7 @@ $adm = $_SESSION['adm'];
                         <tbody>
                             <?php
 
-                            $result = $mysqli->query("SELECT id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido is Null");
+                            $result = $mysqli->query("SELECT id_data ,id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido is Null");
 
                             while ($row = $result->fetch_assoc()) {
 
@@ -74,7 +76,7 @@ $adm = $_SESSION['adm'];
                                     echo "<tr>";
                                 }
 
-                                echo "<td>$id</td>";
+                                echo "<td>" . $row['id_data'] . "</td>";
                                 echo "<td>" . $row['contratante'] . "</td>";
                                 echo "<td>" . transformDate($row['data_festa']) . "</td>";
                                 echo "<td>" . $row['tipo_festa'] . "</td>";
@@ -152,11 +154,15 @@ $adm = $_SESSION['adm'];
                     <th>Data</th>
                     <th id="aniversariante">Aniversariante</th>
                     <th>Situação</th>
+                    <th>Valor</th>
+                    <th>Valor pago</th>
+                    <th>Adicionar pagamento</th>
+                    <th>Quanto falta</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $resultNaoPagas = $mysqli->query("SELECT * FROM festas WHERE status = 'A pagar' OR status = 'Pré Pago' OR status IS NULL");
+                $resultNaoPagas = $mysqli->query("SELECT id, id_data, contratante, data_festa, aniversariante, status, valor, valor_pago FROM festas WHERE status = 'A pagar' OR status = 'Pré Pago' OR status IS NULL");
                 while ($row = $resultNaoPagas->fetch_assoc()) {
                     if ($row['status'] == '' || $row['status'] == 'A pagar') {
                         echo "<tr class='has-background-danger has-text-light'>";
@@ -164,11 +170,23 @@ $adm = $_SESSION['adm'];
                     if ($row['status'] == 'Pré pago') {
                         echo "<tr class='has-background-warning'>";
                     }
-                    echo "<td>" . $row['id'] . "</td>";
+
+                    $valorFaltante = $row['valor'];
+
+                    if ($row['valor_pago'] && $row['valor']) {
+                        $valorFaltante = $row['valor'] - $row['valor_pago'];
+                    }
+
+                    $idModal = $row['id'];
+                    echo "<td>" . $row['id_data'] . "</td>";
                     echo "<td>" . $row['contratante'] . "</td>";
                     echo "<td>" . transformDate($row['data_festa']) . "</td>";
                     echo "<td>" . $row['aniversariante'] . "</td>";
                     echo "<td>" . $row['status'] . "</td>";
+                    echo "<td>" . $row['valor'] . "</td>";
+                    echo "<td>" . $row['valor_pago'] . "</td>";
+                    echo "<td><input class='input is-small input-modal'><button class='button is-small button-adicionar-pagamento' value='$idModal'>Adicionar</button><button class='button is-link is-loading is-small none'></button></td>";
+                    echo "<td class='quanto-falta'>$valorFaltante</td>";
                     echo "</tr>";
                 }
                 ?>
