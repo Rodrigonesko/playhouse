@@ -19,6 +19,10 @@ if($_POST['concluir-festa']){
         $update->bind_param('ii', $concluiu, $id);
         $update->execute();
 
+        $insert = $mysqli->prepare("INSERT INTO gastos_extras (id_festa) VALUES (?)");
+        $insert->bind_param('i', $id);
+        $insert->execute();
+
         $_SESSION['msg'] = "<p class='success'>Festa $id concluida com sucesso!</p>";
 
         header("Location: ../../dashboard.php");

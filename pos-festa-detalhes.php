@@ -22,6 +22,7 @@ $adm = $_SESSION['adm'];
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/pos-festa-detalhes.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
     <title>Pos Festa Detalhes</title>
 </head>
 
@@ -29,6 +30,20 @@ $adm = $_SESSION['adm'];
     <header>
         <?php
         include_once 'components/header.php';
+
+        $id = $_GET['id'];
+
+        $select = $mysqli->query("SELECT * FROM festas WHERE id='$id'");
+
+        $row = $select->fetch_assoc();
+
+        $valor = $row['valor'];
+        $valorPago = $row['valor_pago'];
+        $valorExcedente = $row['valor_excedente'];
+        $valorTotal = '';
+        $horasExcedentes = $row['horas_excedentes'];
+        $valorHorasExcedentes = $row['valor_horas_excedentes'];
+
         ?>
     </header>
     <main>
@@ -40,13 +55,13 @@ $adm = $_SESSION['adm'];
                     </div>
                     <div class="box">
                         <div class="subtitle is-flex is-align-items-center">
-                            <span>Valor:</span> <input type="text" placeholder="Valor" class="input">
+                            <span>Valor:</span> <input type="text" placeholder="Valor" class="input" value="<?php echo $valor ?>">
                         </div>
                         <div class="subtitle is-flex is-align-items-center">
                             <span>Valor Pago:</span> <input type="text" placeholder="Valor Pago" class="input">
                         </div>
                         <div class="subtitle is-flex is-align-items-center">
-                            <span>Valor a mais:</span> <input type="text" placeholder="Valor a mais" class="input">
+                            <span>Valor Excedente:</span> <input type="text" placeholder="Valor a mais" class="input">
                         </div>
                         <div class="subtitle is-flex is-align-items-center">
                             <span>Valor total:</span> <input type="text" placeholder="Valor Total" class="input">
@@ -69,9 +84,11 @@ $adm = $_SESSION['adm'];
                             Horas a mais
                         </div>
                         <div>
-                            <input type="text" name="horas_excedentes" id="horas_excedentes" placeholder="Horas Excedentes" class="input">
-                            <input type="text" name="valor_horas_excedentes" id="valor_horas_excedentes" class="input" placeholder="Valor Horas Excedentes">
-                            <button class="button">Adicionar</button>
+                            <form action="php/posFesta/HorasExcedentes.php?id=<?php echo $id ?>" method="post">
+                                <input type="text" name="horas_excedentes" id="horas_excedentes" placeholder="Horas Excedentes" class="input" value="<?php echo $horasExcedentes ?>">
+                                <input type="text" name="valor_horas_excedentes" id="valor_horas_excedentes" class="input" placeholder="Valor Horas Excedentes" value="<?php echo $valorHorasExcedentes ?>">
+                                <button class="button" name="adicionar_horas">Adicionar</button>
+                            </form>
                         </div>
                     </div>
                     <div class="box">

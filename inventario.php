@@ -29,6 +29,7 @@ $adm = $_SESSION['adm'];
     <header>
         <?php
         include_once 'components/header.php';
+
         ?>
     </header>
     <main>
