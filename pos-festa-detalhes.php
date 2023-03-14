@@ -44,6 +44,10 @@ $adm = $_SESSION['adm'];
         $horasExcedentes = $row['horas_excedentes'];
         $valorHorasExcedentes = $row['valor_horas_excedentes'];
 
+        $selectGastosExtras = $mysqli->query("SELECT * FROM gastos_extras WHERE id_festa='$id' AND categoria='Gasto extra'");
+
+        $selectCopa = $mysqli->query("SELECT * FROM gastos_extras WHERE id_festa='$id' AND categoria='Copa'");
+
         ?>
     </header>
     <main>
@@ -53,6 +57,12 @@ $adm = $_SESSION['adm'];
                     <div class="title">
                         Pós Festa
                     </div>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
                     <div class="box">
                         <div class="subtitle is-flex is-align-items-center">
                             <span>Valor:</span> <input type="text" placeholder="Valor" class="input" value="<?php echo $valor ?>">
@@ -96,10 +106,39 @@ $adm = $_SESSION['adm'];
                             Gastos extras
                         </div>
                         <div>
-                            <input type="text" name="gasto_extra_item" id="gasto_extra_item" placeholder="Item" class="input">
-                            <input type="text" name="gasto_extra_quantidade" id="gasto_extra_quantidade" placeholder="Quantidade" class="input">
-                            <input type="text" name="gasto_extra_valor" id="gasto_extra_valor" placeholder="Valor" class="input">
-                            <button class="button">Adicionar</button>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <form action="php/posFesta/gastosExtras.php?id_festa=<?php echo $id ?>" method="post">
+                                            <th><input type="text" name="gasto_extra_item" id="gasto_extra_item" placeholder="Item" class="input"></th>
+                                            <th><input type="text" name="gasto_extra_quantidade" id="gasto_extra_quantidade" placeholder="Quantidade" class="input"></th>
+                                            <th><input type="text" name="gasto_extra_valor" id="gasto_extra_valor" placeholder="Valor" class="input"></th>
+                                            <th><button class="button" name="adicionar">Adicionar</button></th>
+                                        </form>
+                                    </tr>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($row = $selectGastosExtras->fetch_assoc()) {
+                                        $idItem = $row['id'];
+                                        echo "<tr>";
+                                        echo "<form action='php/posFesta/gastosExtras.php?id=$idItem&id_festa=$id' method='post'>";
+                                        echo "<td>" . $row['item'] . "</td>";
+                                        echo "<td>" . $row['quantidade'] . "</td>";
+                                        echo "<td>" . $row['valor'] . "</td>";
+                                        echo "<td><button class='button is-danger' name='delete'>Deletar</button></td>";
+                                        echo "</form>";
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="box">
@@ -107,9 +146,31 @@ $adm = $_SESSION['adm'];
                             Copa
                         </div>
                         <div>
-                            <input type="text" name="copa_item" id="copa_item" placeholder="Item" class="input">
-                            <input type="text" name="copa_quantidade" id="copa_quantidade" placeholder="Quantidade" class="input">
-                            <button class="button">Adicionar</button>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <form action="php/posFesta/copa.php?id_festa=<?php echo $id ?>" method="post">
+                                            <th><input type="text" name="copa_item" id="copa_item" placeholder="Item" class="input"></th>
+                                            <th><input type="text" name="copa_quantidade" id="copa_quantidade" placeholder="Quantidade" class="input"></th>
+                                            <th><button class="button" name="adicionar">Adicionar</button></th>
+                                        </form>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($row = $selectCopa->fetch_assoc()) {
+                                        $idItem = $row['id'];
+                                        echo "<tr>";
+                                        echo "<form action='php/posFesta/copa.php?id=$idItem&id_festa=$id' method='post'>";
+                                        echo "<td>" . $row['item'] . "</td>";
+                                        echo "<td>" . $row['quantidade'] . "</td>";
+                                        echo "<td><button class='button is-danger' name='delete'>Deletar</button></td>";
+                                        echo "</form>";
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

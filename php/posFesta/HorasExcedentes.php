@@ -24,7 +24,7 @@ if (isset($_POST['adicionar_horas'])) {
     $update->execute();
 
     if ($update->affected_rows > 0) {
-        $_SESSION['msg'] = "<p class='success'>Festa cadastrada com sucesso!</p>";
+        $_SESSION['msg'] = "<p class='success'>Horas Excedentes atualizadas!</p>";
         header("Location: ../../pos-festa-detalhes.php?id=$id");
     } else {
         $_SESSION['msg'] = "<p class='warning'>Algo deu errado</p>";
