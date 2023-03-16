@@ -107,7 +107,6 @@ $tipoFesta = $row['tipo_festa'];
             <div>
                 <div class="select">
                     <select name="opcao-1-mesa" id="opcao-1-mesa">
-
                         <?php
                         $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
                         while ($row = $select->fetch_assoc()) {

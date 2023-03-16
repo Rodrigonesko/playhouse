@@ -22,7 +22,7 @@ $adm = $_SESSION['adm'];
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/pos-festa.css">
     <script src="js/dashboard.js" defer></script>
-    <title>Pós Festa</title>
+    <title>Concluídas</title>
 </head>
 
 <body>
@@ -61,7 +61,7 @@ $adm = $_SESSION['adm'];
                         <tbody>
                             <?php
 
-                            $result = $mysqli->query("SELECT id, contratante, id_data, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido = 1");
+                            $result = $mysqli->query("SELECT id, contratante, id_data, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido = 2");
 
                             while ($row = $result->fetch_assoc()) {
 
@@ -77,8 +77,8 @@ $adm = $_SESSION['adm'];
                                 echo "<td>" . $row['aniversariante'] . "</td>";
                                 echo "<td>" . $row['status'] . "</td>";
                                 echo  "<td class='detalhes'>
-                                    <a href='pos-festa-detalhes.php?id=$id'>Pós Festa</a>
-                        </td>";
+        <a href='pos-festa-detalhes.php?id=$id'>Pós Festa</a>
+</td>";
                                 echo "</tr>";
                             }
 

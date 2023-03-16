@@ -8,7 +8,6 @@ require_once '../connection.php';
     <div>
         <div class="select">
             <select name="opcao-1-mesa" id="opcao-1-mesa">
-                <option value="Nenhum">Nenhum</option>
                 <?php
                 $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
                 while ($row = $select->fetch_assoc()) {
@@ -20,7 +19,6 @@ require_once '../connection.php';
         </div>
         <div class="select">
             <select name="opcao-2-mesa" id="opcao-2-mesa">
-                <option value="Nenhum">Nenhum</option>
                 <?php
                 $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
                 while ($row = $select->fetch_assoc()) {
@@ -32,7 +30,6 @@ require_once '../connection.php';
         </div>
         <div class="select">
             <select name="opcao-3-mesa" id="opcao-3-mesa">
-                <option value="Nenhum">Nenhum</option>
                 <?php
                 $select = $mysqli->query("SELECT * FROM mesa_boas_vindas WHERE festa = 'play'");
                 while ($row = $select->fetch_assoc()) {

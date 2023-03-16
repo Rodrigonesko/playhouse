@@ -32,6 +32,9 @@
                         <a href="posFesta.php">Pós Festa</a>
                     </li>
                     <li class="menu-item">
+                        <a href="concluidas.php">Concluídas</a>
+                    </li>
+                    <li class="menu-item">
                         <a href="inventario.php">Inventário</a>
                     </li>
 
