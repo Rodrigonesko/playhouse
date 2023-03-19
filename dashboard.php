@@ -42,8 +42,13 @@ $adm = $_SESSION['adm'];
                     }
                     ?>
                 </div>
-                <div>
-                    <h3>Filtros</h3>
+                <div class="mb-6 is-flex">
+                    <form action="#" id="form-pesquisa">
+                        <input type="text" class="input" placeholder="ID, Contrante ou Aniversariante" id="pesquisa">
+                        <button class="button is-info">Buscar</button>
+                    </form>
+                    <button class="button is-link" id="limpa-filtro">Limpar Filtro</button>
+                    <button class='button is-link is-loading loading none' id="loading"></button>
                 </div>
                 <div class="center-div">
                     <table class="table scroll-table">
@@ -58,7 +63,7 @@ $adm = $_SESSION['adm'];
                                 <th>Detalhes</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table-body">
                             <?php
 
                             $result = $mysqli->query("SELECT id_data ,id, contratante, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido is Null");

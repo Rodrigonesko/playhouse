@@ -7,7 +7,7 @@
 }
 
 a {
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .section {
@@ -55,4 +55,8 @@ a {
     top: 50%;
     right: 50%;
     z-index: 900;
+}
+
+#form-pesquisa {    
+    display: flex;
 }

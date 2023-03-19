@@ -21,7 +21,8 @@ $adm = $_SESSION['adm'];
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/pos-festa.css">
-    <script src="js/dashboard.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+    <script src="js/posFesta.js" defer></script>
     <title>Pós Festa</title>
 </head>
 
@@ -42,8 +43,13 @@ $adm = $_SESSION['adm'];
                 ?>
             </div>
             <div class="container">
-                <div class="filters">
-                    <h3>Filtros</h3>
+                <div class="mb-6 is-flex">
+                    <form action="#" id="form-pesquisa">
+                        <input type="text" class="input" placeholder="ID, Contrante ou Aniversariante" id="pesquisa">
+                        <button class="button is-info">Buscar</button>
+                    </form>
+                    <button class="button is-link" id="limpa-filtro">Limpar Filtro</button>
+                    <button class='button is-link is-loading loading none' id="loading"></button>
                 </div>
                 <div class="is-flex is-justify-content-center">
                     <table class="table scroll-table">
@@ -58,7 +64,7 @@ $adm = $_SESSION['adm'];
                                 <th>Detalhes</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table-body">
                             <?php
 
                             $result = $mysqli->query("SELECT id, contratante, id_data, data_festa, tipo_festa, aniversariante, status FROM festas WHERE concluido = 1");

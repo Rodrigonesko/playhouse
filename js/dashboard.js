@@ -55,3 +55,45 @@ Object.values(buttonAdicionarPagamento).forEach(e => {
     })
 })
 
+const formPesquisa = document.getElementById('form-pesquisa')
+
+formPesquisa.addEventListener('submit', (e) => {
+    e.preventDefault()
+    $('#loading').show('fast')
+    const pesquisa = document.getElementById('pesquisa').value
+    if (!pesquisa) {
+        $('#loading').hide('fast')
+        return
+    }
+    $.get('php/dashboard/pesquisa.php', {
+        pesquisa
+    }, function (data) {
+        if (!data) {
+            document.getElementById("table-body").innerHTML = 'Nenhum dado encontrado'
+        }
+        document.getElementById("table-body").innerHTML = data
+        $('#loading').hide('fast')
+        Object.values(buttonAbrirModal).forEach(e => {
+            e.addEventListener('click', () => {
+                modal.showModal()
+
+                let value = e.value
+                value = value.split('-')
+                let id = value[0]
+                let contratante = value[1]
+
+                spanIdFesta.textContent = id
+                spanContratante.textContent = contratante
+
+                buttonConcluirFesta.value = id
+
+            })
+        })
+    })
+})
+
+const limparFiltro = document.getElementById('limpa-filtro')
+
+limparFiltro.addEventListener('click', e => {
+    window.location.reload()
+})
